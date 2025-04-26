@@ -28,3 +28,12 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _on_detect_interactable_area_area_entered(area: Area2D) -> void:
 	super.on_area_detected(area)
 	pass # Replace with function body.
+	
+func _on_mouse_entered() -> void:
+	mouse_enter = true
+	pass # Replace with function body.
+
+
+func _on_mouse_exited() -> void:
+	mouse_enter = false
+	pass # Replace with function body.

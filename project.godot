@@ -39,3 +39,6 @@ right_click={
 2d_physics/layer_3="VattenKanna"
 2d_physics/layer_4="Kanin"
 2d_physics/layer_5="Flower"
+2d_physics/layer_6="Cursor"
+2d_physics/layer_7="OutOfBoundsCollider"
+2d_physics/layer_8="Weed"

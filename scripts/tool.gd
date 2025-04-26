@@ -7,6 +7,7 @@ var performing_action: bool = false
 var interactable_area: InteractableArea = null
 
 func _ready():
+	super._ready()
 	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
 
 func _on_event(event: InputEvent) -> void:
