@@ -86,3 +86,6 @@ func _on_grow_timer_timeout() -> void:
 		
 func _on_interaction_timer_timeout() -> void:
 	can_interact = true
+
+func _kill():
+	print("i was killed!")

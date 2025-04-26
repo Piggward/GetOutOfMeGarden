@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://qgo1bya3vc6d"]
+[gd_scene load_steps=6 format=4 uid="uid://qgo1bya3vc6d"]
 
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
 [ext_resource type="PackedScene" uid="uid://lulhcgkxqusc" path="res://scenes/bobbing_water_effect.tscn" id="2_26krl"]
 [ext_resource type="PackedScene" uid="uid://by77kh12qqij3" path="res://scenes/goat_effect.tscn" id="3_y2ar3"]
 [ext_resource type="PackedScene" uid="uid://tvrfmubcn278" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
+[ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="5_vs0mk"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,3 +40,9 @@ position = Vector2(596, 90)
 
 [node name="FlowerBed" parent="." instance=ExtResource("4_xa8rf")]
 position = Vector2(261, 281)
+
+[node name="Bunny" parent="." instance=ExtResource("5_vs0mk")]
+position = Vector2(291, 60)
+jump_distance = 15.0
+jump_time = 1.0
+kill_flower_distance = 1.0

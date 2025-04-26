@@ -9,14 +9,14 @@ var throw_velocity = Vector2.ZERO
 
 func _input(event):
 	if event.is_action_pressed("left_click") and get_global_mouse_position().distance_to(global_position) < 32:
-		is_held = true
+		_setheld(true)
 		freeze = true
 		linear_velocity = Vector2.ZERO
 		angular_velocity = 0
 		linear_damp = 0
 	elif event.is_action_released("left_click") and is_held:
 		freeze_mode = FreezeMode.FREEZE_MODE_KINEMATIC
-		is_held = false
+		_setheld(false)
 		freeze = false
 		linear_velocity = throw_velocity.clamp(Vector2(-max_velocity, -max_velocity), Vector2(max_velocity, max_velocity))
 		linear_damp = damp
@@ -27,3 +27,6 @@ func _physics_process(delta):
 		throw_velocity = (mouse_pos - last_mouse_pos) / delta
 		global_position = mouse_pos
 		last_mouse_pos = mouse_pos
+
+func _setheld(value:bool):
+	is_held = value

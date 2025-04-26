@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://5y0mhwbcuqgf"]
+
+[ext_resource type="Texture2D" uid="uid://b0i8gnabl2182" path="res://assets/animals/bunny_animations.png" id="1_0sl5a"]
+[ext_resource type="Script" uid="uid://d35i68frrxug7" path="res://scripts/bunny_ai.gd" id="1_qn21b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfjs7"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(0, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovlj1"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(17, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdyof"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(34, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggkmg"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(51, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l787c"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(0, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn21b"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qchqy"]
+atlas = ExtResource("1_0sl5a")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l787c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfjs7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovlj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdyof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggkmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l787c")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn21b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qchqy")
+}],
+"loop": true,
+"name": &"struggle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qchqy"]
+
+[node name="Bunny" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_qn21b")
+jump_distance = 20.0
+jump_speed = 7.0
+jump_time = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_l787c")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qchqy")
