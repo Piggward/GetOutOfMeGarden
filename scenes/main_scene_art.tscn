@@ -1,12 +1,13 @@
 [gd_scene load_steps=28 format=4 uid="uid://wp0cro7q2wqd"]
 
+[ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
-[ext_resource type="Script" uid="uid://bk12cvipv1ujx" path="res://scripts/tool_area.gd" id="2_1fh0c"]
+[ext_resource type="Script" path="res://scripts/tool_area.gd" id="2_1fh0c"]
 [ext_resource type="PackedScene" uid="uid://lulhcgkxqusc" path="res://scenes/bobbing_water_effect.tscn" id="2_26krl"]
 [ext_resource type="PackedScene" uid="uid://by77kh12qqij3" path="res://scenes/goat_effect.tscn" id="3_y2ar3"]
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
 [ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="5_vs0mk"]
-[ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
+[ext_resource type="PackedScene" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
 [ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="6_qceur"]
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
@@ -66,6 +67,8 @@ animations = [{
 polygon = PackedVector2Array(243, 286, 243, 276, 444, 276, 444, 287)
 
 [node name="Node2D2" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_1fh0c")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
