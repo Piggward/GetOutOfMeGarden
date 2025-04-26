@@ -14,13 +14,6 @@ var spawnables: Dictionary = {
 }
 
 func _ready():
-	# Set the spawn area size according to the input values
-	spawn_area.position = spawn_area.position  # Just to ensure it's correctly placed in the scene
-	spawn_area.scale = Vector2.ONE  # Reset scale, we won't use it anymore
-	spawn_area.set("rect_size", Vector2(spawn_area_width, spawn_area_height))  # Adjust size
-
-	queue_redraw()  # Draw the debug border
-	
 	debug_spawn_loop()
 
 func spawn_object(object_name: String) -> void:
@@ -36,7 +29,6 @@ func spawn_object(object_name: String) -> void:
 		if is_space_free_at_position(pos, object_size):
 			var instance = object_scene.instantiate()
 			instance.position = pos
-			instance.z_index = 10  # Make sure it renders in front
 			spawned_objects.add_child(instance)
 			return
 	print("No available space found to spawn object: [%s] with size: [%s]." % [object_name, object_size])
@@ -62,16 +54,17 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	params.collide_with_areas = true
 
 	return space_state.intersect_shape(params, 1).is_empty()
-
-func _draw() -> void: # TODO: remove me to get rid of the green debug-border of spawnarea
-	# Draw the spawn area size using the input dimensions
-	var size = Vector2(spawn_area_width, spawn_area_height)
-	var half = size / 2
-	draw_rect(Rect2(spawn_area.position - half, size), Color.GREEN, false, 2.0)
 	
 func debug_spawn_loop() -> void:
 	while true:
 		spawn_object("flower")
 		await get_tree().create_timer(1.0).timeout
+		
+# UNCOMMENT ME IF YOU WANT TO SEE OUTLINE OF SPAWNABLEAREA!
+#func _draw():
+	#var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
+	#var top_left := spawn_area.position - half_size
+	#var rect := Rect2(top_left, half_size * 2)
+	#draw_rect(rect, Color.GREEN, false, 2.0)
 		
 	

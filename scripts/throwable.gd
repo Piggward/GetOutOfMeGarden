@@ -4,11 +4,17 @@ extends RigidBody2D
 var is_held = false
 var last_mouse_pos = Vector2.ZERO
 var throw_velocity = Vector2.ZERO
+var player: Player
 @export var damp: float = 3.0
 @export var max_velocity: float = 500
+var mouse_enter = false
 
+func _ready():
+	player = get_tree().get_first_node_in_group("player")
+	
 func _input(event):
-	if event.is_action_pressed("left_click") and get_global_mouse_position().distance_to(global_position) < 32:
+	if event.is_action_pressed("left_click") and player.can_pick_up() and mouse_enter:
+		player.pick_up(self)
 		_setheld(true)
 		freeze = true
 		linear_velocity = Vector2.ZERO
@@ -16,6 +22,7 @@ func _input(event):
 		linear_damp = 0
 	elif event.is_action_released("left_click") and is_held:
 		freeze_mode = FreezeMode.FREEZE_MODE_KINEMATIC
+		player.release()
 		_setheld(false)
 		freeze = false
 		linear_velocity = throw_velocity.clamp(Vector2(-max_velocity, -max_velocity), Vector2(max_velocity, max_velocity))
