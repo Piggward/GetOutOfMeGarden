@@ -7,8 +7,8 @@ extends Node2D
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
 
 var spawnables: Dictionary = {
-	"weed": {
-		"scene": preload("res://scenes/weed.tscn"),
+	"flower": {
+		"scene": preload("res://scenes/flower.tscn"),
 		"size": Vector2(16,16)
 	}
 }
