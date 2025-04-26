@@ -17,6 +17,7 @@ var flower
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready(): 
+	super._ready()
 	isJumping = false
 	flower_bed = get_tree().get_first_node_in_group("flower_bed")
 	flower = flower_bed.get_random_alive_flower()

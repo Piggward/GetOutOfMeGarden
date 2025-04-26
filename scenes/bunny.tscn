@@ -73,6 +73,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qchqy"]
 
 [node name="Bunny" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 32
 gravity_scale = 0.0
 script = ExtResource("1_qn21b")
 jump_distance = 20.0

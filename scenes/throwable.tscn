@@ -7,6 +7,7 @@
 
 [node name="Throwable" type="RigidBody2D"]
 position = Vector2(597, 255)
+input_pickable = true
 gravity_scale = 0.0
 script = ExtResource("1_2nnd5")
 
@@ -16,3 +17,6 @@ texture = ExtResource("2_ef5ia")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(7.07652, 7.07652)
 shape = SubResource("CircleShape2D_nputv")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
