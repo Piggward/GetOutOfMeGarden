@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btrevxwhwbtfs" path="res://assets/farming_tools/GardenSheers.png" id="1_136eo"]
 [ext_resource type="Script" uid="uid://phrmcrewi78b" path="res://scenes/tools/scissors.gd" id="1_i6u0j"]
-[ext_resource type="Script" uid="uid://cvcchcdlvtrum" path="res://scripts/interactable_area.gd" id="3_obcea"]
+[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="4_ubv7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
 
@@ -23,16 +23,14 @@ shape = SubResource("RectangleShape2D_obcea")
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_136eo")
 
-[node name="DetectInteractableArea" type="Area2D" parent="."]
-collision_mask = 128
-script = ExtResource("3_obcea")
-metadata/_custom_type_script = "uid://cvcchcdlvtrum"
+[node name="DetectInteractableArea" parent="." instance=ExtResource("4_ubv7k")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractableArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectInteractableArea"]
 scale = Vector2(1.27434, 1.27434)
 shape = SubResource("RectangleShape2D_ubv7k")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="area_entered" from="DetectInteractableArea" to="." method="_on_detect_interactable_area_area_entered"]
+
+[editable path="DetectInteractableArea"]

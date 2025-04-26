@@ -3,6 +3,7 @@ extends Tool
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var water_marker: Marker2D = $WaterMarker
+@onready var detect_interactable_area: Area2D = $DetectInteractableArea
 
 func start_performing_action():
 	performing_action = true
@@ -19,17 +20,13 @@ func stop_performing_action():
 	pass
 
 func _process(delta: float) -> void:
-	if interactable_area != null and performing_action:
-		interactable_area.interact()
+	if interactable_areas.size() > 0 and performing_action:
+		interactable_areas[0].interact()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	super._on_event(event)
 	pass # Replace with function body.
 
-
-func _on_detect_interactable_area_area_entered(area: Area2D) -> void:
-	super.on_area_detected(area)
-	pass # Replace with function body.
 	
 func _on_mouse_entered() -> void:
 	mouse_enter = true
