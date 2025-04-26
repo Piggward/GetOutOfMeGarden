@@ -1,21 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx84dyfq0w7h4"]
+[gd_scene load_steps=2 format=3 uid="uid://tr6x00wjuvlf"]
 
-[sub_resource type="Curve" id="Curve_pw7gn"]
-_data = [Vector2(0.75, 0.988764), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://c6c865k555axr" path="res://scenes/green_explosion_particles.tscn" id="1_u6yoj"]
 
 [node name="green_explotion" type="Node2D"]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 11
-one_shot = true
-explosiveness = 0.92
-direction = Vector2(0, -1)
-spread = 77.18
-gravity = Vector2(0, 96.73)
-initial_velocity_min = 50.51
-initial_velocity_max = 80.82
-scale_amount_max = 4.0
-scale_amount_curve = SubResource("Curve_pw7gn")
-color = Color(0.00585991, 0.494497, 0, 1)
+[node name="green_explosion" parent="." instance=ExtResource("1_u6yoj")]

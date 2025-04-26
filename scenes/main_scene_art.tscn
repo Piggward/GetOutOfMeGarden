@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cyob4bvq34o1d" path="res://scenes/tools/scissors.tscn" id="10_122in"]
+[ext_resource type="PackedScene" uid="uid://bd711j20uj8os" path="res://scenes/weed.tscn" id="11_ifydx"]
 [ext_resource type="PackedScene" uid="uid://b24hflvs220wc" path="res://scenes/over_growth_bar.tscn" id="12_ki7aw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrwv"]
@@ -134,21 +135,21 @@ kill_flower_distance = 1.0
 [node name="BunnyManager" parent="." instance=ExtResource("6_0jxs1")]
 position = Vector2(332, 35)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("6_qceur")]
-position = Vector2(341, 129)
-
 [node name="SpawnableArea" parent="." instance=ExtResource("7_smrwv")]
 position = Vector2(330, 140)
 spawn_area_width = 350.0
 spawn_area_height = 200.0
 
-[node name="RigidBody2D2" parent="." instance=ExtResource("6_qceur")]
-position = Vector2(524, 257)
-
 [node name="Player" parent="." instance=ExtResource("8_smrwv")]
 
+[node name="Weed" parent="." instance=ExtResource("11_ifydx")]
+position = Vector2(448, 108)
+
 [node name="Scissors" parent="." instance=ExtResource("10_122in")]
-position = Vector2(247, 135)
+position = Vector2(397, 159)
+
+[node name="WateringCan" parent="." instance=ExtResource("6_qceur")]
+position = Vector2(247, 119)
 
 [node name="over_growth_bar" parent="." instance=ExtResource("12_ki7aw")]
 position = Vector2(468, 264)
@@ -156,4 +157,7 @@ position = Vector2(468, 264)
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
 
+[editable path="Scissors"]
+[editable path="Scissors/DetectInteractableArea"]
+[editable path="WateringCan"]
 [editable path="SpawnableArea"]

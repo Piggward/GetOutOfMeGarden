@@ -18,6 +18,7 @@ func stop_performing_action():
 func _process(delta: float) -> void:
 	if interactable_areas.size() > 0 and performing_action:
 		interactable_areas[0].interact()
+		performing_action = false
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	super._on_event(event)
