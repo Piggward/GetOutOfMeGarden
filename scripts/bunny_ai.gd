@@ -1,3 +1,4 @@
+class_name Bunny
 extends ThrowableBody
 var target_postition:Vector2
 var jump_position:Vector2

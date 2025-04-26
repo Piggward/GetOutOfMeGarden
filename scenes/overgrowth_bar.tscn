@@ -20,7 +20,6 @@ offset_right = 101.0
 offset_bottom = 311.0
 rotation = 3.14159
 max_value = 25.0
-value = 25.0
 fill_mode = 2
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_mr7d1")

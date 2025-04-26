@@ -86,7 +86,7 @@ jump_time = 3.0
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l787c")
 animation = &"struggle"
-frame_progress = 0.446578
+frame_progress = 0.459942
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qchqy")

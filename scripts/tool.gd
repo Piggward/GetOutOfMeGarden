@@ -32,12 +32,8 @@ func _on_event(event: InputEvent) -> void:
 	pass # Replace with function body.
 	
 func _setheld(value:bool):
-	is_held = value
-	if value:
-		player.pick_up(self)
-	else:
-		player.release()
-		stop_performing_action()
+	super._setheld(value)
+	stop_performing_action()
 	
 func start_performing_action():
 	performing_action = true

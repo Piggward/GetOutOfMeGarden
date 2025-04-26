@@ -9,6 +9,7 @@ var player: Player
 @export var max_velocity: float = 500
 var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
+var has_picked_up: bool = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -16,7 +17,6 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("left_click") and player.can_pick_up() and mouse_enter:
 		_setheld(true)
-		freeze = true
 		linear_velocity = Vector2.ZERO
 		angular_velocity = 0
 		linear_damp = 0
@@ -37,6 +37,9 @@ func _physics_process(delta):
 func _setheld(value:bool):
 	is_held = value
 	if value:
+		if not has_picked_up:
+			Global.has_picked_up.emit(self)
+			has_picked_up = true
 		player.pick_up(self)
 	else:
 		player.release()

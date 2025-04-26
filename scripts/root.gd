@@ -4,7 +4,8 @@ extends InteractableArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $root_art/AnimatedSprite2D
 const GREEN_EXPLOSION_PARTICLES = preload("res://scenes/green_explosion_particles.tscn")
 
-func interact(tool_used: String):
+func interact(tool_used: String = ""):
+	super.interact()
 	if tool_used == "shovel":
 		print("hit me")
 		self.damage()
