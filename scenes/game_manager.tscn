@@ -6,6 +6,5 @@
 script = ExtResource("1_hwd4i")
 
 [node name="WaveTimer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

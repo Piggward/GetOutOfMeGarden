@@ -1,24 +1,21 @@
-[gd_scene load_steps=41 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=55 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
+[ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
 [ext_resource type="Script" uid="uid://bk12cvipv1ujx" path="res://scripts/tool_area.gd" id="2_1fh0c"]
 [ext_resource type="PackedScene" uid="uid://lulhcgkxqusc" path="res://scenes/bobbing_water_effect.tscn" id="2_26krl"]
 [ext_resource type="PackedScene" uid="uid://by77kh12qqij3" path="res://scenes/goat_effect.tscn" id="3_y2ar3"]
 [ext_resource type="Texture2D" uid="uid://bq0wi8nw060no" path="res://assets/particles/star_06.png" id="4_wau27"]
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
-[ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="5_vs0mk"]
+[ext_resource type="Texture2D" uid="uid://dti8xo1td4twl" path="res://assets/animals/sheep_baby animation.png" id="5_wau27"]
 [ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
 [ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="6_qceur"]
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
-[ext_resource type="Texture2D" uid="uid://b0o31o87m4c2s" path="res://scenes/player/HandIcons.png" id="10_1r8fp"]
-[ext_resource type="PackedScene" uid="uid://cyob4bvq34o1d" path="res://scenes/tools/scissors.tscn" id="10_122in"]
-[ext_resource type="PackedScene" uid="uid://bd711j20uj8os" path="res://scenes/weed.tscn" id="11_ifydx"]
-[ext_resource type="PackedScene" uid="uid://2tjxvguuvqcc" path="res://scenes/tools/shovel.tscn" id="14_60cwg"]
 [ext_resource type="Script" uid="uid://d3wkbtn4suwqm" path="res://scripts/canvas_layer.gd" id="16_01anq"]
 [ext_resource type="PackedScene" uid="uid://dxq2cnuc4d5rs" path="res://scenes/overgrowth_bar.tscn" id="16_h3kef"]
-[ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="17_05j0p"]
+[ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
 
 [sub_resource type="Gradient" id="Gradient_01anq"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -59,6 +56,154 @@ scale_max = 0.03
 scale_curve = SubResource("CurveTexture_ta3j7")
 color = Color(0.984314, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_emd7q"]
+atlas = ExtResource("5_wau27")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta3j7"]
+atlas = ExtResource("5_wau27")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eghg8"]
+atlas = ExtResource("5_wau27")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lhwe"]
+atlas = ExtResource("5_wau27")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur6ie"]
+atlas = ExtResource("5_wau27")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0lk0"]
+atlas = ExtResource("5_wau27")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2mtu"]
+atlas = ExtResource("5_wau27")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fia6d"]
+atlas = ExtResource("5_wau27")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr3bs"]
+atlas = ExtResource("5_wau27")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxybo"]
+atlas = ExtResource("5_wau27")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uddyk"]
+atlas = ExtResource("5_wau27")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u0n2"]
+atlas = ExtResource("5_wau27")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_486no"]
+atlas = ExtResource("5_wau27")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r35ck"]
+atlas = ExtResource("5_wau27")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wlq4"]
+atlas = ExtResource("5_wau27")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6smih"]
+atlas = ExtResource("5_wau27")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m56su"]
+atlas = ExtResource("5_wau27")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmmft"]
+atlas = ExtResource("5_wau27")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt0bm"]
+atlas = ExtResource("5_wau27")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fswy"]
+atlas = ExtResource("5_wau27")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_om63h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emd7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta3j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eghg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lhwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur6ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0lk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2mtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fia6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr3bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxybo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uddyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u0n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_486no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r35ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wlq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6smih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m56su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmmft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt0bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fswy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrwv"]
 size = Vector2(14, 291)
 
@@ -83,36 +228,22 @@ size = Vector2(13, 278)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8fp"]
 size = Vector2(417, 282)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h3kef"]
-atlas = ExtResource("10_1r8fp")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_05j0p"]
-atlas = ExtResource("10_1r8fp")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_01anq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h3kef")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_05j0p")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ul6ws"]
 polygon = PackedVector2Array(243, 286, 243, 276, 444, 276, 444, 287)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_01anq"]
-atlas = ExtResource("17_05j0p")
-region = Rect2(65.5548, 37.3099, 60.6124, 22.1226)
-
 [node name="Node2D2" type="Node2D"]
+
+[node name="TutorialManager" type="Node" parent="."]
+script = ExtResource("1_h3kef")
+
+[node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
+position = Vector2(430, 185)
+
+[node name="FirstStumpMarker" type="Marker2D" parent="TutorialManager"]
+position = Vector2(334, 170)
+
+[node name="FirstBunnyMarker" type="Marker2D" parent="TutorialManager"]
+position = Vector2(542, 93)
 
 [node name="GameManager" parent="." instance=ExtResource("1_1fh0c")]
 
@@ -144,6 +275,27 @@ scale = Vector2(0.409059, 0.409059)
 energy = 0.6
 texture = SubResource("GradientTexture2D_wau27")
 
+[node name="Lamp4" type="PointLight2D" parent="Lighting"]
+position = Vector2(199, 304)
+scale = Vector2(0.270838, 0.270838)
+color = Color(1, 0.862745, 0, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_wau27")
+
+[node name="Lamp5" type="PointLight2D" parent="Lighting"]
+position = Vector2(216, 320)
+scale = Vector2(0.270838, 0.270838)
+color = Color(1, 0.862745, 0, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_wau27")
+
+[node name="Lamp6" type="PointLight2D" parent="Lighting"]
+position = Vector2(181, 321)
+scale = Vector2(0.270838, 0.270838)
+color = Color(1, 0.862745, 0, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_wau27")
+
 [node name="Lamp2" type="PointLight2D" parent="Lighting"]
 position = Vector2(121, 311)
 scale = Vector2(0.409059, 0.409059)
@@ -166,6 +318,10 @@ scale = Vector2(2.77949, 690.537)
 energy = 0.65
 texture = SubResource("GradientTexture1D_emd7q")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+energy = 0.1
+blend_mode = 1
+
 [node name="Decorations" type="Node2D" parent="."]
 
 [node name="Lilypad" parent="Decorations" instance=ExtResource("2_26krl")]
@@ -179,6 +335,11 @@ lifetime = 3.0
 explosiveness = 0.4
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_eghg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Decorations"]
+texture_filter = 1
+position = Vector2(144, 339)
+sprite_frames = SubResource("SpriteFrames_om63h")
 
 [node name="Boundries" type="Node2D" parent="."]
 
@@ -228,6 +389,9 @@ shape = SubResource("RectangleShape2D_1r8fp")
 [node name="VattenKannaMarker" type="Marker2D" parent="Boundries/ToolArea"]
 position = Vector2(160, 233)
 
+[node name="ShovelMarker" type="Marker2D" parent="Boundries/ToolArea"]
+position = Vector2(325, 223)
+
 [node name="ScissorMarker" type="Marker2D" parent="Boundries/ToolArea"]
 position = Vector2(497, 238)
 
@@ -243,12 +407,6 @@ position = Vector2(596, 90)
 [node name="FlowerBed" parent="." instance=ExtResource("4_xa8rf")]
 position = Vector2(261, 281)
 
-[node name="Bunny" parent="." instance=ExtResource("5_vs0mk")]
-position = Vector2(291, 60)
-jump_distance = 15.0
-jump_time = 1.0
-kill_flower_distance = 1.0
-
 [node name="BunnyManager" parent="." instance=ExtResource("6_0jxs1")]
 position = Vector2(332, 35)
 
@@ -259,66 +417,41 @@ spawn_area_height = 200.0
 
 [node name="Player" parent="." instance=ExtResource("8_smrwv")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(0.0219972, 0.0219972)
-sprite_frames = SubResource("SpriteFrames_01anq")
-
-[node name="Weed" parent="." instance=ExtResource("11_ifydx")]
-position = Vector2(448, 108)
-
-[node name="Scissors" parent="." instance=ExtResource("10_122in")]
-position = Vector2(397, 159)
-
 [node name="WateringCan" parent="." instance=ExtResource("6_qceur")]
 position = Vector2(267, 174)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ul6ws")
 
-[node name="Scissors2" parent="." instance=ExtResource("14_60cwg")]
-position = Vector2(191, 202)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("16_01anq")
 
 [node name="OvergrowthBar" parent="CanvasLayer" instance=ExtResource("16_h3kef")]
+visible = false
 offset_left = 128.0
 offset_top = 362.0
 offset_right = 226.175
 offset_bottom = 673.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-texture_filter = 1
-offset_left = 6.0
-offset_top = 312.0
-offset_right = 149.0
-offset_bottom = 367.0
-texture = SubResource("AtlasTexture_01anq")
+[node name="TextureRect" parent="CanvasLayer" instance=ExtResource("19_wau27")]
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect"]
-texture_filter = 1
-layout_mode = 1
+[node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 anchors_preset = -1
-anchor_left = 0.096
-anchor_top = 0.297
-anchor_right = 0.912
-anchor_bottom = 0.829
-offset_left = 0.256
-offset_top = -2.493
-offset_right = 3.43199
-offset_bottom = -0.201004
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-text = "OVERGROWTH"
-horizontal_alignment = 1
-vertical_alignment = 1
+anchor_left = 0.466
+anchor_top = 0.01
+anchor_right = 0.5
+anchor_bottom = 0.07
+offset_left = -245.0
+offset_top = 16.0
+offset_right = 246.0
+offset_bottom = 164.0
+grow_horizontal = 2
 
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
 [connection signal="flowers_died" from="FlowerBed" to="GameManager" method="_on_flower_bed_flowers_died"]
 
 [editable path="SpawnableArea"]
-[editable path="Scissors"]
-[editable path="Scissors/DetectInteractableArea"]
 [editable path="WateringCan"]
+[editable path="CanvasLayer/ToolTip"]

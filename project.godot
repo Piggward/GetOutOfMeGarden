@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GetOutOfMeGarden"
-run/main_scene="uid://qgo1bya3vc6d"
+run/main_scene="uid://wp0cro7q2wqd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/global/global.gd"
 
 [display]
 
