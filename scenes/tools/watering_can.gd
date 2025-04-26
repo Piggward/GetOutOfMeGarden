@@ -5,6 +5,11 @@ extends Tool
 @onready var water_marker: Marker2D = $WaterMarker
 @onready var detect_interactable_area: Area2D = $DetectInteractableArea
 var holding_action = false
+@onready var cursor_marker = $CursorMarker
+
+func _ready():
+	super._ready()
+	offset = cursor_marker.position
 
 func start_performing_action():
 	animation_player.play("water")

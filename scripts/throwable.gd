@@ -8,6 +8,7 @@ var player: Player
 @export var damp: float = 3.0
 @export var max_velocity: float = 500
 var mouse_enter = false
+var offset: Vector2 = Vector2.ZERO
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	if is_held:
 		var mouse_pos = get_global_mouse_position()
 		throw_velocity = (mouse_pos - last_mouse_pos) / delta
-		global_position = mouse_pos
+		global_position = mouse_pos - offset
 		last_mouse_pos = mouse_pos
 
 func _setheld(value:bool):

@@ -228,6 +228,9 @@ collision_base_size = 0.01
 visibility_rect = Rect2(-17, 0, 22, 100)
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
+[node name="CursorMarker" type="Marker2D" parent="."]
+position = Vector2(4, -9)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

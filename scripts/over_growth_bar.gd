@@ -1,8 +1,7 @@
-extends Node2D
-@onready var progress_bar: TextureProgressBar = $TextureProgressBar
+extends TextureProgressBar
 
 #@onready var progress_bar: ProgressBar = $ProgressBar
-@onready var spawned_objects: Node2D = $"../SpawnableArea/SpawnedObjects"
+@onready var spawned_objects: Node2D = $"../../SpawnableArea/SpawnedObjects"
 var spawn_manager:SpawnManager
 
 
@@ -12,6 +11,6 @@ func _ready() -> void:
 
 func _update_value():
 	var amount_of_grass_or_roots = spawned_objects.get_children().size()-1
-	progress_bar.value = amount_of_grass_or_roots
-	progress_bar.value_changed.emit()
+	self.value = amount_of_grass_or_roots
+	self.value_changed.emit()
 	
