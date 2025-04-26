@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://uoo3t71yuptp"]
 
-[ext_resource type="Script" path="res://scripts/spawn_manager.gd" id="1_kgvh7"]
+[ext_resource type="Script" uid="uid://mor7gxaw3q8u" path="res://scripts/spawn_manager.gd" id="1_kgvh7"]
 
-[node name="SpawnableArea" type="Node2D"]
+[node name="SpawnableArea" type="Node2D" groups=["spawn_manager"]]
 script = ExtResource("1_kgvh7")
 
 [node name="SpawnedObjects" type="Node2D" parent="."]

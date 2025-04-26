@@ -151,7 +151,8 @@ position = Vector2(524, 257)
 position = Vector2(247, 135)
 
 [node name="over_growth_bar" parent="." instance=ExtResource("12_ki7aw")]
-position = Vector2(468, 264)
+position = Vector2(110, 48)
+scale = Vector2(0.508651, 0.453443)
 
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
