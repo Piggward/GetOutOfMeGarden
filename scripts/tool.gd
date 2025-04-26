@@ -21,8 +21,6 @@ func _on_area_detected(area: InteractableArea):
 func _on_area_left(area):
 	if interactable_areas.has(area):
 		interactable_areas.erase(area)
-		if interactable_areas.is_empty():
-			stop_performing_action()
 
 func _on_event(event: InputEvent) -> void:
 	if player.holding != self:
