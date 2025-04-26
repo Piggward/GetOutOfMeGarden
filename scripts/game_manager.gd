@@ -45,6 +45,7 @@ func next_wave() -> GameState:
 	return GameState.START
 	
 func _on_start_next_wave_timer_timeout() -> void:
+	if current_state == GameState.WAVE_3: return
 	var next_state = next_wave()
 	print("[GameManager#_on_start_next_wave_timer_timeout] Update state from: [%s], to: [%s]" % [current_state, next_state])
 	current_state = next_state
