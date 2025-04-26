@@ -7,14 +7,41 @@ extends Node2D
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
 
 var spawnables: Dictionary = {
+	"weed": {
+		"scene": preload("res://scenes/weeds_art.tscn"),
+		"size": Vector2(16,16)
+	},
 	"flower": {
 		"scene": preload("res://scenes/flower.tscn"),
 		"size": Vector2(16,16)
-	}
+	},
+	"root": {
+		"scene": preload("res://scenes/root_art.tscn"),
+		"size": Vector2(16,16)
+	},
 }
 
 func _ready():
-	debug_spawn_loop()
+	#debug_spawn_loop()
+	pass
+	
+# spawn_rate in s
+func start_spawning_object(object_name: String, spawn_rate: int) -> void:
+	var timer = Timer.new()
+	timer.name = "SpawnTimer[%s]" % object_name  # Optional: helpful for debugging
+	timer.wait_time = spawn_rate
+	timer.one_shot = false
+	timer.autostart = true
+	add_child(timer)
+
+	# Bind the function and arguments to the timer's timeout signal
+	timer.timeout.connect(_on_spawn_timer_timeout.bind(spawn_object, [object_name]))
+
+	timer.start()
+
+# Called every time any timer fires
+func _on_spawn_timer_timeout(func_to_call: Callable, args: Array):
+	func_to_call.callv(args)
 
 func spawn_object(object_name: String) -> void:
 	if not spawnables.has(object_name):
@@ -57,8 +84,14 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	
 func debug_spawn_loop() -> void:
 	while true:
-		spawn_object("flower")
+		spawn_object("weed")
 		await get_tree().create_timer(1.0).timeout
+		
+func _destroy_all_spawned_objects() -> void:
+	print("[SpawnManager#_destroy_all_spawned_object] destroying all children now")
+	for child in spawned_objects.get_children():
+		child.queue_free()
+		
 		
 # UNCOMMENT ME IF YOU WANT TO SEE OUTLINE OF SPAWNABLEAREA!
 #func _draw():
