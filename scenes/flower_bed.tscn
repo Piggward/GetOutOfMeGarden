@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://blkawa1nvi8ob"]
+[gd_scene load_steps=3 format=3 uid="uid://tvrfmubcn278"]
 
-[ext_resource type="Script" uid="uid://5y0uq31am80f" path="res://scripts/flower_bed.gd" id="1_i33q1"]
-[ext_resource type="PackedScene" uid="uid://cdlwuu15cidr3" path="res://scenes/flower.tscn" id="1_whtkq"]
+[ext_resource type="Script" path="res://scripts/flower_bed.gd" id="1_i33q1"]
+[ext_resource type="PackedScene" path="res://scenes/flower.tscn" id="1_whtkq"]
 
 [node name="FlowerBed" type="Node2D"]
 script = ExtResource("1_i33q1")
@@ -9,13 +9,13 @@ script = ExtResource("1_i33q1")
 [node name="Flower" parent="." instance=ExtResource("1_whtkq")]
 
 [node name="Flower2" parent="." instance=ExtResource("1_whtkq")]
-position = Vector2(202, 0)
+position = Vector2(163, 0)
 
 [node name="Flower3" parent="." instance=ExtResource("1_whtkq")]
-position = Vector2(131, 0)
+position = Vector2(83, 0)
 
 [node name="Flower4" parent="." instance=ExtResource("1_whtkq")]
-position = Vector2(63, 0)
+position = Vector2(40, 0)
 
 [node name="Flower5" parent="." instance=ExtResource("1_whtkq")]
-position = Vector2(263, 0)
+position = Vector2(120, 1)
