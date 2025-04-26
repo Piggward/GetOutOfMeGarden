@@ -77,14 +77,16 @@ color = Color(0.341176, 0.847059, 1, 1)
 [node name="RigidBody2D" type="RigidBody2D"]
 input_pickable = true
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_rm0o0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0647202, 0.0647202)
+texture_filter = 1
+scale = Vector2(0.0364586, 0.0364586)
 texture = ExtResource("2_q2shw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(3.01251, 3.01251)
+scale = Vector2(1.83207, 1.83207)
 shape = SubResource("CircleShape2D_4ftxe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -96,10 +98,11 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractableArea"]
 position = Vector2(-7, 43)
+scale = Vector2(0.692763, 0.692763)
 shape = SubResource("CapsuleShape2D_rm0o0")
 
 [node name="WaterMarker" type="Marker2D" parent="."]
-position = Vector2(-8, 21)
+position = Vector2(-4, 12)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="WaterMarker"]
 emitting = false
