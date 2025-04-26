@@ -9,7 +9,7 @@ const HAND_CLOSED = preload("res://scenes/player/hand_closed.png")
 const HAND_OPEN = preload("res://scenes/player/hand_open.png")
 
 func _ready():
-	Input.set_custom_mouse_cursor(HAND_OPEN, 0, Vector2(16, 16))
+	reset_cursor()
 	pass
 
 func can_pick_up():
@@ -17,8 +17,14 @@ func can_pick_up():
 	
 func release():
 	holding = null
-	Input.set_custom_mouse_cursor(HAND_OPEN, 0, Vector2(16, 16))
+	set_cursor(HAND_OPEN)
 	
 func pick_up(body: ThrowableBody): 
 	holding = body
-	Input.set_custom_mouse_cursor(HAND_CLOSED, 0, Vector2(16, 16))
+	set_cursor(HAND_CLOSED)
+	
+func set_cursor(c):
+	Input.set_custom_mouse_cursor(c, 0, Vector2(16, 16))
+	
+func reset_cursor():
+	set_cursor(HAND_OPEN)
