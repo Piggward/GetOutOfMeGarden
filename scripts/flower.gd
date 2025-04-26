@@ -38,11 +38,11 @@ func interact():
 func set_growth_stage(id: int):
 	cur_sprite_id = start_sprite_id + id
 	sprite_sheet.frame = cur_sprite_id
+	current_water_liters = max_water_liters
 	growth_timer.paused = false
 
 func _ready():
 	watering_speed = max_water_liters/watering_speed_factor
-	current_water_liters = randi_range(2, 10)
 	growth_timer.paused = false
 # GROW
 func _on_grow_timer_timeout() -> void:
@@ -61,4 +61,4 @@ func _kill():
 	is_dead = true
 	set_growth_stage(progress.DEAD)
 	growth_timer.paused = true
-	flower_died.emit()
+	flower_died.emit(self)

@@ -24,15 +24,10 @@ func set_growth_stage(id: int):
 		flower.set_growth_stage(id)
 		
 func get_random_alive_flower()-> Area2D:
-	return flowers[randi_range(0,flowers.size()-1)]
+	return flowers_alive[randi_range(0,flowers_alive.size()-1)]
 
-func _on_flower_flower_died() -> void:
-	var index_to_remove = flowers_alive.size()
-	for flower in flowers_alive:
-		if flower.is_dead:
-			
-	
+func _on_flower_flower_died(dead_flower: Flower) -> void:
+	flowers_alive.erase(dead_flower)
+
 	if flowers_alive.size() == 0:
 		flowers_died.emit() 
-
-func 
