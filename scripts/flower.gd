@@ -23,8 +23,8 @@ func is_interactable(tool: String):
 		return true
 	return false
 
-func interact():
-	if not can_interact:
+func interact(tool_used: String):
+	if not can_interact or tool_used != "watering":
 		return
 	
 	can_interact = false

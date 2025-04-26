@@ -6,5 +6,5 @@ signal die(area: InteractableArea)
 func is_interactable(tool: String):
 	pass
 
-func interact():
+func interact(tool: String):
 	pass

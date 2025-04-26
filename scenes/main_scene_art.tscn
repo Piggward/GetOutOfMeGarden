@@ -157,6 +157,9 @@ position = Vector2(468, 264)
 
 [node name="Scissors2" parent="." instance=ExtResource("14_60cwg")]
 position = Vector2(191, 202)
+efficiency = null
+damp = null
+max_velocity = null
 
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
