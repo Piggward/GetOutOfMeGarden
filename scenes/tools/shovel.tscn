@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl7tsd3138yyx"]
+[gd_scene load_steps=6 format=3 uid="uid://2tjxvguuvqcc"]
 
 [ext_resource type="Script" uid="uid://bu2ytkj620cv2" path="res://scenes/tools/shovel.gd" id="1_jkevs"]
 [ext_resource type="Texture2D" uid="uid://cow62jjlkenkf" path="res://assets/farming_tools/all_tools/Showel.png" id="2_jkevs"]
@@ -10,7 +10,7 @@ size = Vector2(15.9824, 16.7815)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubv7k"]
 size = Vector2(11.8658, 11.8658)
 
-[node name="Scissors2" type="RigidBody2D"]
+[node name="Shovel" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 96
 input_pickable = true
@@ -31,8 +31,8 @@ scale = Vector2(0.0253534, 0.0253534)
 texture = ExtResource("2_jkevs")
 
 [node name="DetectInteractableArea" parent="." instance=ExtResource("3_y6jdd")]
-collision_layer = 1
-collision_mask = 128
+collision_layer = 2
+collision_mask = 256
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectInteractableArea"]
 position = Vector2(-4, 5)

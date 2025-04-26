@@ -6,12 +6,17 @@ class_name SpawnManager
 @export var spawn_area_width: float = 500.0  # Width of the spawn area
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
 const WEED = preload("res://scenes/weed.tscn")
+const ROOT = preload("res://scenes/root.tscn")
 
 signal on_spawn
 
 var spawnables: Dictionary = {
 	"weed": {
 		"scene": WEED,
+		"size": Vector2(16,16)
+	},
+	"root": {
+		"scene": ROOT,
 		"size": Vector2(16,16)
 	}
 }
@@ -61,6 +66,7 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	
 func debug_spawn_loop() -> void:
 	while true:
+		spawn_object("root")
 		spawn_object("weed")
 		await get_tree().create_timer(1.0).timeout
 		
