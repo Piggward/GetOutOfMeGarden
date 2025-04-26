@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx83b8dydnol3"]
+[gd_scene load_steps=4 format=3 uid="uid://bx83b8dydnol3"]
 
 [ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="1_kx1v6"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="2_kx1v6"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kx1v6"]
+polygon = PackedVector2Array(97, 412, 226, 420, 198, 464, 106, 461)
+
 [node name="test" type="Node2D"]
 
 [node name="WateringCan" parent="." instance=ExtResource("1_kx1v6")]
-position = Vector2(190, 109)
+position = Vector2(134, -72)
 
 [node name="GPUParticles2D" parent="WateringCan/WaterMarker" index="0"]
+position = Vector2(0, -6)
 emitting = true
+visibility_rect = Rect2(0, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_kx1v6")]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 256
+position = Vector2(58, -98)
+occluder = SubResource("OccluderPolygon2D_kx1v6")
+occluder_light_mask = 256
 
 [editable path="WateringCan"]
