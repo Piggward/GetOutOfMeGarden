@@ -396,9 +396,13 @@ animations = [{
 bg_color = Color(0.415686, 0.772549, 1, 1)
 
 [node name="Flower" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
 script = ExtResource("1_8x8dx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.997497, 1)
 sprite_frames = SubResource("SpriteFrames_dne62")
 speed_scale = 0.0
 

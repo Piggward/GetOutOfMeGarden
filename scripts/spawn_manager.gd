@@ -5,16 +5,13 @@ class_name SpawnManager
 
 @export var spawn_area_width: float = 500.0  # Width of the spawn area
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
+const WEED = preload("res://scenes/weed.tscn")
 
 signal on_spawn
 
 var spawnables: Dictionary = {
 	"weed": {
-		"scene": preload("res://scenes/weeds_art.tscn"),
-		"size": Vector2(16,16)
-	},
-	"flower": {
-		"scene": preload("res://scenes/weeds_art.tscn"),
+		"scene": WEED,
 		"size": Vector2(16,16)
 	},
 	"root": {

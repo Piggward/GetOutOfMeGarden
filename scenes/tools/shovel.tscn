@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://2tjxvguuvqcc"]
+
+[ext_resource type="Script" uid="uid://bu2ytkj620cv2" path="res://scenes/tools/shovel.gd" id="1_jkevs"]
+[ext_resource type="Texture2D" uid="uid://cow62jjlkenkf" path="res://assets/farming_tools/all_tools/Showel.png" id="2_jkevs"]
+[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_y6jdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
+size = Vector2(15.9824, 16.7815)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubv7k"]
+size = Vector2(11.8658, 11.8658)
+
+[node name="Scissors" type="RigidBody2D"]
+collision_mask = 96
+input_pickable = true
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_jkevs")
+efficiency = null
+damp = null
+max_velocity = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-07, 0.5)
+scale = Vector2(1.25138, 1.25138)
+shape = SubResource("RectangleShape2D_obcea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0253534, 0.0253534)
+texture = ExtResource("2_jkevs")
+
+[node name="DetectInteractableArea" parent="." instance=ExtResource("3_y6jdd")]
+collision_layer = 1
+collision_mask = 128
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectInteractableArea"]
+position = Vector2(-4, 5)
+scale = Vector2(1.0719, 1.0719)
+shape = SubResource("RectangleShape2D_ubv7k")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+
+[editable path="DetectInteractableArea"]

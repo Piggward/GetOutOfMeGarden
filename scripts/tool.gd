@@ -16,17 +16,28 @@ func _ready():
 	
 func _on_area_detected(area: InteractableArea):
 	interactable_areas.append(area)
+	area.die.connect(_on_area_left)
 	
 func _on_area_left(area):
 	if interactable_areas.has(area):
 		interactable_areas.erase(area)
 
 func _on_event(event: InputEvent) -> void:
+	if player.holding != self:
+		return
 	if event.is_action_pressed("right_click"):
 		start_performing_action()
 	if event.is_action_released("right_click"):
 		stop_performing_action()
 	pass # Replace with function body.
+	
+func _setheld(value:bool):
+	is_held = value
+	if value:
+		player.pick_up(self)
+	else:
+		player.release()
+		stop_performing_action()
 	
 func start_performing_action():
 	performing_action = true

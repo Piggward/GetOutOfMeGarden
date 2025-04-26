@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=4 uid="uid://qgo1bya3vc6d"]
+[gd_scene load_steps=24 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
-[ext_resource type="Script" path="res://scripts/tool_area.gd" id="2_1fh0c"]
+[ext_resource type="Script" uid="uid://bk12cvipv1ujx" path="res://scripts/tool_area.gd" id="2_1fh0c"]
 [ext_resource type="PackedScene" uid="uid://lulhcgkxqusc" path="res://scenes/bobbing_water_effect.tscn" id="2_26krl"]
 [ext_resource type="PackedScene" uid="uid://by77kh12qqij3" path="res://scenes/goat_effect.tscn" id="3_y2ar3"]
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cyob4bvq34o1d" path="res://scenes/tools/scissors.tscn" id="10_122in"]
+[ext_resource type="PackedScene" uid="uid://bd711j20uj8os" path="res://scenes/weed.tscn" id="11_ifydx"]
 [ext_resource type="PackedScene" uid="uid://b24hflvs220wc" path="res://scenes/over_growth_bar.tscn" id="12_ki7aw"]
+[ext_resource type="PackedScene" path="res://scenes/tools/shovel.tscn" id="14_60cwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrwv"]
 size = Vector2(14, 291)
@@ -38,7 +40,10 @@ size = Vector2(13, 278)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8fp"]
 size = Vector2(417, 282)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ul6ws"]
+polygon = PackedVector2Array(243, 286, 243, 276, 444, 276, 444, 287)
+
+[node name="Node2D2" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_1fh0c")]
 
@@ -139,19 +144,38 @@ position = Vector2(332, 35)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("6_qceur")]
 position = Vector2(341, 129)
+[node name="SpawnableArea" parent="." instance=ExtResource("7_smrwv")]
+position = Vector2(330, 140)
+spawn_area_width = 350.0
+spawn_area_height = 200.0
 
 [node name="Player" parent="." instance=ExtResource("8_smrwv")]
 
+[node name="Weed" parent="." instance=ExtResource("11_ifydx")]
+position = Vector2(448, 108)
+
 [node name="Scissors" parent="." instance=ExtResource("10_122in")]
-position = Vector2(247, 135)
+position = Vector2(397, 159)
+
+[node name="WateringCan" parent="." instance=ExtResource("6_qceur")]
+position = Vector2(267, 174)
 
 [node name="over_growth_bar" parent="." instance=ExtResource("12_ki7aw")]
 position = Vector2(468, 264)
 
-[node name="SpawnableArea" parent="." instance=ExtResource("7_smrwv")]
-position = Vector2(330, 140)
-spawn_area_width = 330.0
-spawn_area_height = 140.0
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ul6ws")
+
+[node name="Scissors2" parent="." instance=ExtResource("14_60cwg")]
+position = Vector2(191, 202)
+efficiency = null
+damp = null
+max_velocity = null
 
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
+
+[editable path="SpawnableArea"]
+[editable path="Scissors"]
+[editable path="Scissors/DetectInteractableArea"]
+[editable path="WateringCan"]
