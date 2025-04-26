@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw6ni484y5gla"]
+
+[ext_resource type="Script" uid="uid://bf5nnpvtn7cyi" path="res://scripts/throwable.gd" id="1_2nnd5"]
+
+[node name="Throwable" type="RigidBody2D"]
+script = ExtResource("1_2nnd5")
