@@ -15,17 +15,26 @@ var wave_content: Dictionary = {
 	GameState.WAVE_3: ["weed", "root", "tree"],
 }
 
-var spawn_manager: Node
+#var spawn_manager: Node
+@onready var spawn_manager: Node = $"../SpawnableArea"
 var current_state: GameState = GameState.START
 
 const SpawnManagerScene = preload("res://scenes/spawnable_area.tscn")
 
 func _ready():
-	spawn_manager = SpawnManagerScene.instantiate()
-	spawn_manager.position = Vector2(330.0, 140.0)
-	spawn_manager.spawn_area_height = 140.0
-	spawn_manager.spawn_area_width = 330.0
-	add_child(spawn_manager)
+	pass
+	#spawn_manager = SpawnManagerScene.instantiate()
+	#spawn_manager.name = "SpawnManager"
+	#spawn_manager.position = Vector2(330.0, 140.0)
+	#spawn_manager.spawn_area_height = 140.0
+	#spawn_manager.spawn_area_width = 330.0
+	#print("parent path: %s" % get_parent().get_path())
+	
+	#var parent := get_parent()
+	#parent.ready.connect(func():
+		#parent.add_child(spawn_manager)
+		#print("spawn_manger path: %s" % spawn_manager.get_path())
+	#)
 
 func next_wave() -> GameState:
 	match current_state:

@@ -97,10 +97,10 @@ func _destroy_all_spawned_objects() -> void:
 		
 		
 # UNCOMMENT ME IF YOU WANT TO SEE OUTLINE OF SPAWNABLEAREA!
-#func _draw():
-	#var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
-	#var top_left := spawn_area.position - half_size
-	#var rect := Rect2(top_left, half_size * 2)
-	#draw_rect(rect, Color.GREEN, false, 2.0)
+func _draw():
+	var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
+	var top_left := spawn_area.position - half_size
+	var rect := Rect2(top_left, half_size * 2)
+	draw_rect(rect, Color.GREEN, false, 2.0)
 		
 	
