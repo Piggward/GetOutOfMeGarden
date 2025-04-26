@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjss3qqtrtvrk"]
+
+[ext_resource type="Script" uid="uid://mor7gxaw3q8u" path="res://scripts/spawn_manager.gd" id="1_kgvh7"]
+
+[node name="SpawnableArea" type="Node2D"]
+script = ExtResource("1_kgvh7")
+
+[node name="SpawnedObjects" type="Node2D" parent="."]
+
+[node name="Area" type="Node2D" parent="."]
