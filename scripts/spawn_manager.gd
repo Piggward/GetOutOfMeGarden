@@ -24,7 +24,9 @@ func _ready():
 	debug_spawn_loop()
 
 func spawn_object(object_name: String) -> void:
-	if not spawnables.has(object_name): return
+	if not spawnables.has(object_name):
+		print("[SpawnManager#spawn_object] Not able to spawn unkown entity: %s" % object_name)
+		return
 		
 	var object_scene = spawnables[object_name]["scene"]
 	var object_size = spawnables[object_name]["size"]
@@ -61,7 +63,7 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 
 	return space_state.intersect_shape(params, 1).is_empty()
 
-func _draw() -> void:
+func _draw() -> void: # TODO: remove me to get rid of the green debug-border of spawnarea
 	# Draw the spawn area size using the input dimensions
 	var size = Vector2(spawn_area_width, spawn_area_height)
 	var half = size / 2
@@ -69,7 +71,7 @@ func _draw() -> void:
 	
 func debug_spawn_loop() -> void:
 	while true:
-		spawn_object("weed")
-		await get_tree().create_timer(.1).timeout
+		spawn_object("flower")
+		await get_tree().create_timer(1.0).timeout
 		
 	
