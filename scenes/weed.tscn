@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqp3vi8xwmktg"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ytf4a67fa40"]
 
-[ext_resource type="Script" uid="uid://bl5xrcewrlija" path="res://scenes/weed.gd" id="1_3sedy"]
+[ext_resource type="Script" path="res://scenes/weed.gd" id="1_3sedy"]
 [ext_resource type="Texture2D" uid="uid://qd3v4rrls71t" path="res://assets/farming/crops.png" id="1_04vrx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sedy"]
