@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tvrfmubcn278"]
 
-[ext_resource type="Script" path="res://scripts/flower_bed.gd" id="1_i33q1"]
+[ext_resource type="Script" uid="uid://5y0uq31am80f" path="res://scripts/flower_bed.gd" id="1_i33q1"]
 [ext_resource type="PackedScene" uid="uid://cdlwuu15cidr3" path="res://scenes/flower.tscn" id="1_whtkq"]
 
 [node name="FlowerBed" type="Node2D"]

@@ -6,6 +6,9 @@ extends ThrowableBody
 var performing_action: bool = false
 var interactable_area: InteractableArea = null
 
+func _ready():
+	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
+
 func _on_event(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		start_performing_action()
