@@ -4,8 +4,6 @@
 
 [node name="SpawnableArea" type="Node2D"]
 script = ExtResource("1_kgvh7")
-spawn_area_width = 400.0
-spawn_area_height = 400.0
 
 [node name="SpawnedObjects" type="Node2D" parent="."]
 
