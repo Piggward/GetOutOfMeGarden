@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name FlowerBed
 @onready var flowers = [
 	$Flower,
 	$Flower2,
@@ -12,3 +12,7 @@ func _ready() -> void:
 	for flower in flowers:
 		var random_frame = randi_range(0, flower_start_frames.size() - 1)
 		flower.set_sprite_start_id(flower_start_frames.pop_at(random_frame))
+		
+func get_random_alive_flower()-> Area2D:
+	return flowers[randi_range(0,flowers.size()-1)]
+	
