@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://ue117ad88ghi"]
+
+[ext_resource type="Script" uid="uid://cbopquiuges8" path="res://scenes/tools/watering_can.gd" id="1_rm0o0"]
+[ext_resource type="Texture2D" uid="uid://xoywtnsrog8x" path="res://assets/farming_tools/WateringCan.png" id="2_q2shw"]
+[ext_resource type="Texture2D" uid="uid://dbsjhqinm08w0" path="res://assets/particles/muzzle_02.png" id="3_q2shw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ftxe"]
+
+[sub_resource type="Animation" id="Animation_q2shw"]
+resource_name = "water"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.13446]
+}
+
+[sub_resource type="Animation" id="Animation_4ftxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d3b0s"]
+_data = {
+&"RESET": SubResource("Animation_4ftxe"),
+&"water": SubResource("Animation_q2shw")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm0o0"]
+radius = 22.0
+height = 144.0
+
+[sub_resource type="Curve" id="Curve_4ftxe"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.488597), 0.0, 0.0, 0, 0, Vector2(1, 2.50821), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d3b0s"]
+curve = SubResource("Curve_4ftxe")
+
+[sub_resource type="Curve" id="Curve_gs2qi"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3hski"]
+curve = SubResource("Curve_gs2qi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ah6fy"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 250, 0)
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+tangential_accel_curve = SubResource("CurveTexture_3hski")
+scale_min = 0.01
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_d3b0s")
+color = Color(0.341176, 0.847059, 1, 1)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_rm0o0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0647202, 0.0647202)
+texture = ExtResource("2_q2shw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.01251, 3.01251)
+shape = SubResource("CircleShape2D_4ftxe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d3b0s")
+}
+
+[node name="DetectInteractableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractableArea"]
+position = Vector2(-7, 43)
+shape = SubResource("CapsuleShape2D_rm0o0")
+
+[node name="WaterMarker" type="Marker2D" parent="."]
+position = Vector2(-8, 21)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="WaterMarker"]
+amount = 15
+texture = ExtResource("3_q2shw")
+process_material = SubResource("ParticleProcessMaterial_ah6fy")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="WaterMarker"]
+position = Vector2(-4, -5)
+amount = 15
+texture = ExtResource("3_q2shw")
+process_material = SubResource("ParticleProcessMaterial_ah6fy")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="WaterMarker"]
+position = Vector2(-1, -4)
+amount = 15
+texture = ExtResource("3_q2shw")
+process_material = SubResource("ParticleProcessMaterial_ah6fy")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="WaterMarker"]
+position = Vector2(2, -2)
+amount = 15
+texture = ExtResource("3_q2shw")
+process_material = SubResource("ParticleProcessMaterial_ah6fy")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="WaterMarker"]
+position = Vector2(5, 1)
+amount = 15
+texture = ExtResource("3_q2shw")
+process_material = SubResource("ParticleProcessMaterial_ah6fy")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="DetectInteractableArea" to="." method="_on_detect_interactable_area_area_entered"]

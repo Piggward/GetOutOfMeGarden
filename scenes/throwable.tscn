@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw6ni484y5gla"]
+[gd_scene load_steps=4 format=3 uid="uid://bw6ni484y5gla"]
 
 [ext_resource type="Script" uid="uid://bf5nnpvtn7cyi" path="res://scripts/throwable.gd" id="1_2nnd5"]
+[ext_resource type="Texture2D" uid="uid://w7cdecl55fw5" path="res://icon.svg" id="2_ef5ia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nputv"]
 
 [node name="Throwable" type="RigidBody2D"]
+position = Vector2(597, 255)
+gravity_scale = 0.0
 script = ExtResource("1_2nnd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ef5ia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(7.07652, 7.07652)
+shape = SubResource("CircleShape2D_nputv")

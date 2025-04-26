@@ -1,9 +1,11 @@
+class_name ThrowableBody
 extends RigidBody2D
 
 var is_held = false
 var last_mouse_pos = Vector2.ZERO
 var throw_velocity = Vector2.ZERO
-
+@export var damp: float = 3.0
+@export var max_velocity: float = 500
 
 func _input(event):
 	if event.is_action_pressed("left_click") and get_global_mouse_position().distance_to(global_position) < 32:
@@ -16,8 +18,8 @@ func _input(event):
 		freeze_mode = FreezeMode.FREEZE_MODE_KINEMATIC
 		is_held = false
 		freeze = false
-		linear_velocity = throw_velocity
-		linear_damp = 10
+		linear_velocity = throw_velocity.clamp(Vector2(-max_velocity, -max_velocity), Vector2(max_velocity, max_velocity))
+		linear_damp = damp
 
 func _physics_process(delta):
 	if is_held:
