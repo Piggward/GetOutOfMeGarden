@@ -4,15 +4,24 @@ extends Tool
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var water_marker: Marker2D = $WaterMarker
 @onready var detect_interactable_area: Area2D = $DetectInteractableArea
+var holding_action = false
 
 func start_performing_action():
-	performing_action = true
 	animation_player.play("water")
-	for child in water_marker.get_children():
-		child.emitting = true
+	holding_action = true
 	pass
 	
+func start_watering():
+	if not holding_action:
+		return
+	performing_action = true
+	for child in water_marker.get_children():
+		child.emitting = true
+	
 func stop_performing_action():
+	if not holding_action:
+		return
+	holding_action = false
 	performing_action = false
 	animation_player.play_backwards("water")
 	for child in water_marker.get_children():

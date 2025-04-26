@@ -8,14 +8,6 @@ polygon = PackedVector2Array(97, 412, 226, 420, 198, 464, 106, 461)
 
 [node name="test" type="Node2D"]
 
-[node name="WateringCan" parent="." instance=ExtResource("1_kx1v6")]
-position = Vector2(134, -72)
-
-[node name="GPUParticles2D" parent="WateringCan/WaterMarker" index="0"]
-position = Vector2(0, -6)
-emitting = true
-visibility_rect = Rect2(0, 0, 0, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_kx1v6")]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
@@ -23,5 +15,11 @@ light_mask = 256
 position = Vector2(58, -98)
 occluder = SubResource("OccluderPolygon2D_kx1v6")
 occluder_light_mask = 256
+
+[node name="WateringCan" parent="." instance=ExtResource("1_kx1v6")]
+position = Vector2(226, 229)
+
+[node name="GPUParticles2D" parent="WateringCan/WaterMarker" index="0"]
+emitting = true
 
 [editable path="WateringCan"]
