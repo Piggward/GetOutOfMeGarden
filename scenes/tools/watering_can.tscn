@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ue117ad88ghi"]
+[gd_scene load_steps=15 format=3 uid="uid://ue117ad88ghi"]
 
 [ext_resource type="Script" uid="uid://cbopquiuges8" path="res://scenes/tools/watering_can.gd" id="1_rm0o0"]
 [ext_resource type="Texture2D" uid="uid://xoywtnsrog8x" path="res://assets/farming_tools/WateringCan.png" id="2_q2shw"]
+[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_4ftxe"]
 [ext_resource type="Texture2D" uid="uid://dbsjhqinm08w0" path="res://assets/particles/muzzle_02.png" id="3_q2shw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ftxe"]
@@ -43,9 +44,8 @@ _data = {
 &"water": SubResource("Animation_q2shw")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm0o0"]
-radius = 22.0
-height = 144.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ftxe"]
+height = 116.0
 
 [sub_resource type="Curve" id="Curve_4ftxe"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -96,14 +96,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_d3b0s")
 }
 
-[node name="DetectInteractableArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 16
+[node name="DetectInteractableArea" parent="." instance=ExtResource("3_4ftxe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractableArea"]
-position = Vector2(-7, 43)
-scale = Vector2(0.692763, 0.692763)
-shape = SubResource("CapsuleShape2D_rm0o0")
+position = Vector2(-10, 52)
+shape = SubResource("CapsuleShape2D_4ftxe")
 
 [node name="WaterMarker" type="Marker2D" parent="."]
 position = Vector2(-4, 12)
@@ -145,4 +142,3 @@ process_material = SubResource("ParticleProcessMaterial_ah6fy")
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="area_entered" from="DetectInteractableArea" to="." method="_on_detect_interactable_area_area_entered"]

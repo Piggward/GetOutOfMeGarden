@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvg2oogt28upn"]
+
+[ext_resource type="Script" uid="uid://b53135nnr2feu" path="res://scenes/tools/detect_interactable_area.gd" id="1_5edo7"]
+
+[node name="DetectInteractableArea" type="Area2D"]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_5edo7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
