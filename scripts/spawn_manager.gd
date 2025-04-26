@@ -5,7 +5,8 @@ class_name SpawnManager
 
 @export var spawn_area_width: float = 500.0  # Width of the spawn area
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
-const WEED = preload("res://scenes/weed.tscn")
+const WEED = preload("res://scenes/weeds_art.tscn")
+const ROOT = preload("res://scenes/root_art.tscn")
 
 signal on_spawn
 
@@ -15,7 +16,7 @@ var spawnables: Dictionary = {
 		"size": Vector2(16,16)
 	},
 	"root": {
-		"scene": preload("res://scenes/root_art.tscn"),
+		"scene": ROOT,
 		"size": Vector2(16,16)
 	},
 }
@@ -94,10 +95,10 @@ func _destroy_all_spawned_objects() -> void:
 		
 		
 # UNCOMMENT ME IF YOU WANT TO SEE OUTLINE OF SPAWNABLEAREA!
-func _draw():
-	var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
-	var top_left := spawn_area.position - half_size
-	var rect := Rect2(top_left, half_size * 2)
-	draw_rect(rect, Color.GREEN, false, 2.0)
+#func _draw():
+	#var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
+	#var top_left := spawn_area.position - half_size
+	#var rect := Rect2(top_left, half_size * 2)
+	#draw_rect(rect, Color.GREEN, false, 2.0)
 		
 	

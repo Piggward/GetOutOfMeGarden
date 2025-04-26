@@ -9,32 +9,11 @@ enum GameState {
 	WAVE_3
 }
 
-var wave_content: Dictionary = {
-	GameState.WAVE_1: ["weed"],
-	GameState.WAVE_2: ["weed", "root"],
-	GameState.WAVE_3: ["weed", "root", "tree"],
-}
-
 #var spawn_manager: Node
 @onready var spawn_manager: Node = $"../SpawnableArea"
 var current_state: GameState = GameState.START
 
 const SpawnManagerScene = preload("res://scenes/spawnable_area.tscn")
-
-func _ready():
-	pass
-	#spawn_manager = SpawnManagerScene.instantiate()
-	#spawn_manager.name = "SpawnManager"
-	#spawn_manager.position = Vector2(330.0, 140.0)
-	#spawn_manager.spawn_area_height = 140.0
-	#spawn_manager.spawn_area_width = 330.0
-	#print("parent path: %s" % get_parent().get_path())
-	
-	#var parent := get_parent()
-	#parent.ready.connect(func():
-		#parent.add_child(spawn_manager)
-		#print("spawn_manger path: %s" % spawn_manager.get_path())
-	#)
 
 func next_wave() -> GameState:
 	match current_state:
@@ -57,7 +36,8 @@ func _on_start_next_wave_timer_timeout() -> void:
 		GameState.WAVE_2:
 			spawn_manager.start_spawning_object("root", .1)
 		GameState.WAVE_3:
-			spawn_manager.start_spawning_object("flower", .1)
+			# TODO
+			pass
 	
 	wave_timer.start()	
 
@@ -72,7 +52,3 @@ func _on_wave_timer_timeout() -> void:
 	start_next_wave_timer.one_shot = true
 	start_next_wave_timer.connect("timeout", Callable(self, "_on_start_next_wave_timer_timeout"))
 	start_next_wave_timer.start()
-	
-	
-	
-	
