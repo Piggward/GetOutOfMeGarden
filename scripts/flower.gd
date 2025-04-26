@@ -9,7 +9,10 @@ var is_dry = true
 var can_interact = true
 var start_sprite_id = null
 var cur_sprite_id = null
+
 @onready var interaction_timer = $InteractionTimer
+var watering_speed_factor = 0.2
+var watering_speed = 0
 @onready var sprite_sheet = $Sprite2D
 
 func is_interactable(tool: String):
@@ -30,6 +33,10 @@ func interact():
 		cur_sprite_id += 5
 		sprite_sheet.frame = cur_sprite_id
 	
+	if current_water_liters == max_water_liters:
+		return
+	elif current_water_liters < max_water_liters:
+		current_water_liters += watering_speed
 
 func set_sprite_start_id(id: int):
 	start_sprite_id = id
@@ -38,9 +45,10 @@ func set_sprite_start_id(id: int):
 	sprite_sheet.frame = cur_sprite_id
 
 # TODO: REMOVE THIS LINE ONCE WATERING WORKS
-#func _ready():
+func _ready():
 #	set_sprite_start_id(0)
 #	interact()
+	watering_speed = max_water_liters/watering_speed_factor
 
 # GROW
 func _on_grow_timer_timeout() -> void:
