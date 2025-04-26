@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpg62jqn51xjl"]
+
+[ext_resource type="Script" uid="uid://dnomaavscagt4" path="res://scripts/bunny_manager.gd" id="1_krkya"]
+
+[node name="BunnyManager" type="Node2D"]
+script = ExtResource("1_krkya")
+spawn_area_height = 20.0
+
+[node name="Area" type="Node2D" parent="."]
+
+[node name="SpawnedObjects" type="Node2D" parent="."]
