@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhlx8ryiuyrfr"]
+
+[ext_resource type="Script" uid="uid://chlduphfpe3te" path="res://scenes/fish/fish_ai.gd" id="1_q28ix"]
+[ext_resource type="Texture2D" uid="uid://cdfra5mrsuyue" path="res://assets/1 Fisherman/7.png" id="2_q28ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qchqy"]
+size = Vector2(41.5833, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vs6l"]
+atlas = ExtResource("2_q28ix")
+region = Rect2(0, 0, 30, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_risfn"]
+atlas = ExtResource("2_q28ix")
+region = Rect2(30, 0, 30, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_05g40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vs6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_risfn")
+}],
+"loop": true,
+"name": &"flop",
+"speed": 5.0
+}]
+
+[node name="Fish" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 32
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_q28ix")
+max_velocity = 2000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0099988, 0)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_qchqy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+position = Vector2(-0.0199976, 0)
+scale = Vector2(0.72, 0.72)
+sprite_frames = SubResource("SpriteFrames_05g40")
+animation = &"flop"
+autoplay = "flop"
+frame_progress = 0.821235
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.56, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

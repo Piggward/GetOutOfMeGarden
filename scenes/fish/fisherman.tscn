@@ -1,0 +1,371 @@
+[gd_scene load_steps=41 format=3 uid="uid://c4tlk3cb5tojl"]
+
+[ext_resource type="Script" uid="uid://dqp5waxt0eang" path="res://scenes/fish/fisherman.gd" id="1_c30i1"]
+[ext_resource type="Texture2D" uid="uid://buwhduigrmv3k" path="res://assets/1 Fisherman/Fisherman_fish.png" id="1_wxw8y"]
+[ext_resource type="Texture2D" uid="uid://cnrk8nvfuaes7" path="res://assets/tiles/fishTilesheet.png" id="2_dw1cv"]
+[ext_resource type="Texture2D" uid="uid://b4lxmiddo6p7o" path="res://assets/1 Fisherman/Fisherman_hook.png" id="4_jrtyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c30i1"]
+atlas = ExtResource("1_wxw8y")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrtyl"]
+atlas = ExtResource("1_wxw8y")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wngae"]
+atlas = ExtResource("1_wxw8y")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btjmv"]
+atlas = ExtResource("1_wxw8y")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pneq"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc1h6"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puk5c"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0k5w"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gub7"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3348"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvwat"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc0c1"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwp34"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvpcl"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v8ko"]
+atlas = ExtResource("4_jrtyl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gf35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c30i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrtyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wngae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btjmv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pneq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc1h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puk5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0k5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gub7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3348")
+}],
+"loop": false,
+"name": &"hook",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvwat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc0c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwp34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvpcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v8ko")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su86f"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1024, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhuwd"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1088, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gf35"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(960, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yl16o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su86f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhuwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gf35")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl16o"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(960, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_373f8"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1024, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jema"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1088, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pneq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl16o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_373f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jema")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4nf3"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1088, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf37l"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(960, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3p85"]
+atlas = ExtResource("2_dw1cv")
+region = Rect2(1024, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oc1h6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4nf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf37l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3p85")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_c30i1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18, 26, 0, 0, 0, 0, 11, -1, 0, 0, 0, 0, -6, -31, 0, 0, 0, 0, -23, -86, 0, 0, 0, 0, -25, -141, 0, 0, 0, 0, -30, -171, 0, 0, 0, 0, -57, -166, 0, 0, 0, 0, -116, -149, 0, 0, 0, 0, -109, -123)
+}
+point_count = 9
+
+[sub_resource type="Curve2D" id="Curve2D_jrtyl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 21, 27, 0, 0, 0, 0, 15, -12, 0, 0, 0, 0, 9, -50, 0, 0, 0, 0, -2, -100, 0, 0, 0, 0, -22, -165, 0, 0, 0, 0, -61, -173, 0, 0, 0, 0, -74, -143, 0, 0, 0, 0, -81, -115)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_0gf35"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 22, 26, 0, 0, 0, 0, 26, -36, 0, 0, 0, 0, 26, -115, 0, 0, 0, 0, 28, -165, 0, 0, 0, 0, -8, -205, 0, 0, 0, 0, -54, -199, 0, 0, 0, 0, -96, -153)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_su86f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23, 25, 0, 0, 0, 0, 28, -15, 0, 0, 0, 0, 28, -92, 0, 0, 0, 0, 24, -146, 0, 0, 0, 0, -15, -154, 0, 0, 0, 0, -40, -146, 0, 0, 0, 0, -42, -116, 0, 0, 0, 0, -39, -101)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_vhuwd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 24, 0, 0, 0, 0, 35, -51, 0, 0, 0, 0, 26, -132, 0, 0, 0, 0, 2, -197, 0, 0, 0, 0, -36, -212, 0, 0, 0, 0, -89, -190, 0, 0, 0, 0, -71, -166)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_yl16o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 29, 0, 0, 0, 0, 35, -44, 0, 0, 0, 0, 28, -111, 0, 0, 0, 0, 8, -168, 0, 0, 0, 0, -32, -208, 0, 0, 0, 0, -59, -150, 0, 0, 0, 0, -69, -116)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_373f8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 22, 25, 0, 0, 0, 0, 33, -40, 0, 0, 0, 0, 24, -130, 0, 0, 0, 0, -8, -208, 0, 0, 0, 0, -24, -208, 0, 0, 0, 0, -56, -160, 0, 0, 0, 0, -56, -78)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_8jema"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 27, 0, 0, 0, 0, 37, -39, 0, 0, 0, 0, 22, -114, 0, 0, 0, 0, -8, -197, 0, 0, 0, 0, -36, -197, 0, 0, 0, 0, -50, -139)
+}
+point_count = 6
+
+[node name="Fisherman" type="Node2D" node_paths=PackedStringArray("spawn_paths")]
+script = ExtResource("1_c30i1")
+spawn_paths = [NodePath("Path2D"), NodePath("Path2D2"), NodePath("Path2D3"), NodePath("Path2D4"), NodePath("Path2D5"), NodePath("Path2D6"), NodePath("Path2D7"), NodePath("Path2D7"), NodePath("Path2D8")]
+
+[node name="FishAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0gf35")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="Bubble" type="AnimatedSprite2D" parent="FishAnim"]
+position = Vector2(23.6701, 22.22)
+scale = Vector2(0.145942, 0.131875)
+sprite_frames = SubResource("SpriteFrames_yl16o")
+autoplay = "default"
+frame_progress = 0.963173
+
+[node name="Bubble2" type="AnimatedSprite2D" parent="FishAnim"]
+position = Vector2(16.6701, 26.22)
+scale = Vector2(0.145942, 0.131875)
+sprite_frames = SubResource("SpriteFrames_2pneq")
+autoplay = "default"
+
+[node name="Bubble3" type="AnimatedSprite2D" parent="FishAnim"]
+position = Vector2(15.6701, 21.22)
+scale = Vector2(0.145942, 0.131875)
+sprite_frames = SubResource("SpriteFrames_oc1h6")
+autoplay = "default"
+frame_progress = 0.229878
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(21, 28)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c30i1")
+metadata/_edit_lock_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(18, 26)
+rotation = -2.06722
+rotates = false
+loop = false
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jrtyl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(21, 27)
+rotation = -2.05527
+rotates = false
+loop = false
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0gf35")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(22, 26)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[node name="Path2D4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_su86f")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+position = Vector2(23, 25)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[node name="Path2D5" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vhuwd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+position = Vector2(20, 24)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[node name="Path2D6" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yl16o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+position = Vector2(20, 29)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[node name="Path2D7" type="Path2D" parent="."]
+curve = SubResource("Curve2D_373f8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+position = Vector2(22, 25)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[node name="Path2D8" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8jema")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+position = Vector2(20, 27)
+rotation = -1.85335
+rotates = false
+loop = false
+
+[connection signal="animation_finished" from="FishAnim" to="." method="_on_fish_anim_animation_finished"]

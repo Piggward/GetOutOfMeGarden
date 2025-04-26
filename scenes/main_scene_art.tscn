@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=30 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bd711j20uj8os" path="res://scenes/weed.tscn" id="11_ifydx"]
 [ext_resource type="PackedScene" uid="uid://b24hflvs220wc" path="res://scenes/over_growth_bar.tscn" id="12_ki7aw"]
 [ext_resource type="PackedScene" uid="uid://2tjxvguuvqcc" path="res://scenes/tools/shovel.tscn" id="14_60cwg"]
+[ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="17_05j0p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrwv"]
 size = Vector2(14, 291)
@@ -193,6 +194,10 @@ occluder = SubResource("OccluderPolygon2D_ul6ws")
 
 [node name="Scissors2" parent="." instance=ExtResource("14_60cwg")]
 position = Vector2(191, 202)
+
+[node name="Fisherman" parent="." instance=ExtResource("17_05j0p")]
+position = Vector2(595, 176)
+scale = Vector2(0.599999, 0.599999)
 
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
