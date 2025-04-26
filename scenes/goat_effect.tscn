@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://by77kh12qqij3"]
+
+[ext_resource type="Texture2D" uid="uid://dcm563hryqhi6" path="res://assets/animals/cow animation.png" id="1_hm3wg"]
+[ext_resource type="Script" uid="uid://jplf02h1rf18" path="res://scripts/animated_sprite_start.gd" id="2_8qcbp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qcbp"]
+atlas = ExtResource("1_hm3wg")
+region = Rect2(0, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stj50"]
+atlas = ExtResource("1_hm3wg")
+region = Rect2(48, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75622"]
+atlas = ExtResource("1_hm3wg")
+region = Rect2(72, 96, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8pf20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qcbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stj50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75622")
+}],
+"loop": true,
+"name": &"animation_1",
+"speed": 2.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8pf20")
+animation = &"animation_1"
+frame_progress = 0.193848
+script = ExtResource("2_8qcbp")

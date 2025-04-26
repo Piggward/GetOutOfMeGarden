@@ -21,3 +21,7 @@ config/icon="res://icon.svg"
 2d_physics/layer_3="VattenKanna"
 2d_physics/layer_4="Kanin"
 2d_physics/layer_5="Flower"
+
+[display]
+
+window/stretch/mode="viewport"
