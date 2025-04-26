@@ -16,6 +16,9 @@ input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_jkevs")
+efficiency = null
+damp = null
+max_velocity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 0.5)
