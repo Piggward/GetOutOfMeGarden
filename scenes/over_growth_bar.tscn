@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b24hflvs220wc"]
+
+[ext_resource type="Script" uid="uid://cuctr26yfkumm" path="res://scripts/over_growth_bar.gd" id="1_7as2e"]
+[ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="2_leuuk"]
+[ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="3_hov56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr7d1"]
+atlas = ExtResource("3_hov56")
+region = Rect2(16.2762, 97.8091, 15.7192, 43.4645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr475"]
+atlas = ExtResource("3_hov56")
+region = Rect2(0.173157, 98.5874, 12.9433, 38.0714)
+
+[node name="over_growth_bar" type="Node2D"]
+script = ExtResource("1_7as2e")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 3, 0, 1, 0, 6, 0, 0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 7, 0, 0, 0, 1, 0, 3, 0, 3, 0, 1, 0, 8, 0, 0, 0)
+tile_set = ExtResource("2_leuuk")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1.66051e-06, 0.690188, 0.115196, 1)
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 28.0
+offset_bottom = 57.0
+max_value = 25.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 25.0
+value = 22.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_mr7d1")
+texture_progress = SubResource("AtlasTexture_jr475")
