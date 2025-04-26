@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=41 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
 [ext_resource type="Script" uid="uid://bk12cvipv1ujx" path="res://scripts/tool_area.gd" id="2_1fh0c"]
 [ext_resource type="PackedScene" uid="uid://lulhcgkxqusc" path="res://scenes/bobbing_water_effect.tscn" id="2_26krl"]
 [ext_resource type="PackedScene" uid="uid://by77kh12qqij3" path="res://scenes/goat_effect.tscn" id="3_y2ar3"]
+[ext_resource type="Texture2D" uid="uid://bq0wi8nw060no" path="res://assets/particles/star_06.png" id="4_wau27"]
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
 [ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="5_vs0mk"]
 [ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
@@ -18,6 +19,45 @@
 [ext_resource type="Script" uid="uid://d3wkbtn4suwqm" path="res://scripts/canvas_layer.gd" id="16_01anq"]
 [ext_resource type="PackedScene" uid="uid://dxq2cnuc4d5rs" path="res://scenes/overgrowth_bar.tscn" id="16_h3kef"]
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="17_05j0p"]
+
+[sub_resource type="Gradient" id="Gradient_01anq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wau27"]
+gradient = SubResource("Gradient_01anq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[sub_resource type="Environment" id="Environment_01anq"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.11
+adjustment_enabled = true
+adjustment_contrast = 1.1
+
+[sub_resource type="Gradient" id="Gradient_wau27"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_emd7q"]
+gradient = SubResource("Gradient_wau27")
+
+[sub_resource type="Curve" id="Curve_emd7q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ta3j7"]
+curve = SubResource("Curve_emd7q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eghg8"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(25, 25, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_ta3j7")
+color = Color(0.984314, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrwv"]
 size = Vector2(14, 291)
@@ -96,6 +136,50 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAKABEAAQAuAAMAAAAKABIAAQAuAAQAAAAKABMAAQAuAAUAAAAKABQAAQAuAAYAAAALABAAAQAvAAIAAAALABEAAQAvAAMAAAALABIAAQAvAAQAAAALABMAAQAvAAUAAAALABQAAQAvAAYAAAAMABAAAQAwAAIAAAAMABEAAQAwAAMAAAAMABIAAQAwAAQAAAAMABMAAQAwAAUAAAAMABQAAQAwAAYAAAANABAAAQAxAAIAAAANABEAAQAxAAMAAAANABIAAQAxAAQAAAANABMAAQAxAAUAAAANABQAAQAxAAYAAAAOABAAAQAyAAIAAAAOABEAAQAyAAMAAAAOABIAAQAyAAQAAAAOABMAAQAyAAUAAAAOABQAAQAyAAYAAAAiAAkAAAAkABoAAAAjAAkAAAAlABoAAAAEAAcAAAAXABkAAAAIABMAAQAWAAcAAAAIABQAAQAWAAgAAAAJABMAAQAXAAcAAAAJABQAAQAXAAgAAAA=")
 tile_set = ExtResource("1_o8dd4")
 
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="Lamp1" type="PointLight2D" parent="Lighting"]
+position = Vector2(112, 298)
+scale = Vector2(0.409059, 0.409059)
+energy = 0.6
+texture = SubResource("GradientTexture2D_wau27")
+
+[node name="Lamp2" type="PointLight2D" parent="Lighting"]
+position = Vector2(121, 311)
+scale = Vector2(0.409059, 0.409059)
+energy = 0.6
+texture = SubResource("GradientTexture2D_wau27")
+
+[node name="Lamp3" type="PointLight2D" parent="Lighting"]
+position = Vector2(101, 312)
+scale = Vector2(0.409059, 0.409059)
+energy = 0.6
+texture = SubResource("GradientTexture2D_wau27")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_01anq")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting"]
+position = Vector2(356.443, 206.18)
+rotation = 5.6342
+scale = Vector2(2.77949, 690.537)
+energy = 0.65
+texture = SubResource("GradientTexture1D_emd7q")
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Lilypad" parent="Decorations" instance=ExtResource("2_26krl")]
+position = Vector2(614, 210)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Decorations"]
+position = Vector2(627, 205)
+amount = 3
+texture = ExtResource("4_wau27")
+lifetime = 3.0
+explosiveness = 0.4
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_eghg8")
+
 [node name="Boundries" type="Node2D" parent="."]
 
 [node name="Bounds" type="StaticBody2D" parent="Boundries"]
@@ -152,9 +236,6 @@ position = Vector2(497, 238)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(349, 182)
 zoom = Vector2(1.925, 1.925)
-
-[node name="Node2D" parent="." instance=ExtResource("2_26krl")]
-position = Vector2(614, 210)
 
 [node name="Node2D2" parent="." instance=ExtResource("3_y2ar3")]
 position = Vector2(596, 90)
