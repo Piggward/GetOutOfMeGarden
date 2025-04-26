@@ -9,7 +9,6 @@ var player: Player
 @export var max_velocity: float = 500
 var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
-var has_picked_up: bool = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -37,9 +36,8 @@ func _physics_process(delta):
 func _setheld(value:bool):
 	is_held = value
 	if value:
-		if not has_picked_up:
+		if Global.tutorial:
 			Global.has_picked_up.emit(self)
-			has_picked_up = true
 		player.pick_up(self)
 	else:
 		player.release()

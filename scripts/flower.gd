@@ -14,6 +14,7 @@ var is_dead = false
 var watering_speed_factor = 0.2
 var watering_speed = 0
 @onready var sprite_sheet = $Sprite2D
+var has_pointer = false
 
 enum progress {SEED = 0, SEEDING = 1, SPROUTING = 2, VEGETATION = 3, GROWN = 4, DEAD = 5}
 signal flower_died
@@ -25,7 +26,13 @@ func is_interactable(tool: String):
 
 func interact(tool_used: String = ""):
 	super.interact()
-	if not can_interact or tool_used != "watering":
+	if has_pointer:
+		for child in get_children():
+			if child.name == "Pointer":
+				child.queue_free()
+				has_pointer = false
+				water_level.value = water_level.max_value
+	if not can_interact:
 		return
 	
 	can_interact = false
@@ -42,10 +49,19 @@ func set_growth_stage(id: int):
 	sprite_sheet.frame = cur_sprite_id
 	current_water_liters = max_water_liters
 	growth_timer.paused = false
+	
+func set_to_low():
+	current_water_liters = max_water_liters / 4
+	water_level.value = (current_water_liters/max_water_liters) * 100
 
 func _ready():
 	watering_speed = max_water_liters * watering_speed_factor
+	Global.game_start.connect(_on_game_start)
+	
+func _on_game_start():
 	growth_timer.paused = false
+	growth_timer.start()
+	
 # GROW
 func _on_grow_timer_timeout() -> void:
 	if current_water_liters > 0:
