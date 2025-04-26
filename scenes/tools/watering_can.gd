@@ -9,7 +9,6 @@ func start_performing_action():
 	animation_player.play("water")
 	for child in water_marker.get_children():
 		child.emitting = true
-		child.enabled = true
 	pass
 	
 func stop_performing_action():
@@ -17,7 +16,6 @@ func stop_performing_action():
 	animation_player.play_backwards("water")
 	for child in water_marker.get_children():
 		child.emitting = false
-		child.enabled = false
 	pass
 
 func _process(delta: float) -> void:

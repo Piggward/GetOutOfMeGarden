@@ -14,6 +14,10 @@ config/name="GetOutOfMeGarden"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 left_click={
@@ -34,7 +38,3 @@ right_click={
 2d_physics/layer_3="VattenKanna"
 2d_physics/layer_4="Kanin"
 2d_physics/layer_5="Flower"
-
-[display]
-
-window/stretch/mode="viewport"

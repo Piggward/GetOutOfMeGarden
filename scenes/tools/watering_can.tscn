@@ -6,6 +6,21 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ftxe"]
 
+[sub_resource type="Animation" id="Animation_4ftxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_q2shw"]
 resource_name = "water"
 length = 0.3
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -1.13446]
-}
-
-[sub_resource type="Animation" id="Animation_4ftxe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d3b0s"]
@@ -102,30 +102,35 @@ shape = SubResource("CapsuleShape2D_rm0o0")
 position = Vector2(-8, 21)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="WaterMarker"]
+emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="WaterMarker"]
 position = Vector2(-4, -5)
+emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="WaterMarker"]
 position = Vector2(-1, -4)
+emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="WaterMarker"]
 position = Vector2(2, -2)
+emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [node name="GPUParticles2D5" type="GPUParticles2D" parent="WaterMarker"]
 position = Vector2(5, 1)
+emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
