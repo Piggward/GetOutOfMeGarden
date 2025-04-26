@@ -43,3 +43,4 @@ right_click={
 2d_physics/layer_6="Cursor"
 2d_physics/layer_7="OutOfBoundsCollider"
 2d_physics/layer_8="Weed"
+2d_physics/layer_9="Root"

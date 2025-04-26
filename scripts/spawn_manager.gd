@@ -85,6 +85,7 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	
 func debug_spawn_loop() -> void:
 	while true:
+		spawn_object("root")
 		spawn_object("weed")
 		await get_tree().create_timer(1.0).timeout
 		
