@@ -48,7 +48,7 @@ func _ready():
 func _on_grow_timer_timeout() -> void:
 	if current_water_liters > 0:
 		current_water_liters -= 1
-	print("losing water " + str((current_water_liters/max_water_liters) * 100))
+	#print("losing water " + str((current_water_liters/max_water_liters) * 100))
 	water_level.value = (current_water_liters/max_water_liters) * 100
 	if current_water_liters == 0:
 		_kill()

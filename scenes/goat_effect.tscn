@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://by77kh12qqij3"]
+[gd_scene load_steps=11 format=3 uid="uid://by77kh12qqij3"]
 
+[ext_resource type="Script" uid="uid://bmdybp0apinec" path="res://scenes/goat_effect.gd" id="1_8qcbp"]
 [ext_resource type="Texture2D" uid="uid://dcm563hryqhi6" path="res://assets/animals/cow animation.png" id="1_hm3wg"]
 [ext_resource type="Script" uid="uid://jplf02h1rf18" path="res://scripts/animated_sprite_start.gd" id="2_8qcbp"]
+[ext_resource type="Texture2D" uid="uid://bwfy0td2ahqw1" path="res://assets/animals/heart.png" id="4_stj50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qcbp"]
 atlas = ExtResource("1_hm3wg")
@@ -32,7 +34,18 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stj50"]
+size = Vector2(14, 14)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_75622"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 136.084
+initial_velocity_max = 10.7
+scale_min = 0.9
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_8qcbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -40,3 +53,20 @@ sprite_frames = SubResource("SpriteFrames_8pf20")
 animation = &"animation_1"
 frame_progress = 0.193848
 script = ExtResource("2_8qcbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_stj50")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1, -1)
+emitting = false
+amount = 2
+texture = ExtResource("4_stj50")
+lifetime = 1.74
+process_material = SubResource("ParticleProcessMaterial_75622")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
