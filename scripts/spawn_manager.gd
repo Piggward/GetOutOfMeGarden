@@ -1,11 +1,13 @@
 extends Node2D
-
+class_name SpawnManager
 @onready var spawn_area: Node2D = $Area
 @onready var spawned_objects: Node2D = $SpawnedObjects
 
 @export var spawn_area_width: float = 500.0  # Width of the spawn area
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
 const WEED = preload("res://scenes/weed.tscn")
+
+signal on_spawn
 
 var spawnables: Dictionary = {
 	"weed": {
@@ -31,6 +33,7 @@ func spawn_object(object_name: String) -> void:
 			var instance = object_scene.instantiate()
 			instance.position = pos
 			spawned_objects.add_child(instance)
+			on_spawn.emit()
 			return
 	print("No available space found to spawn object: [%s] with size: [%s]." % [object_name, object_size])
 
