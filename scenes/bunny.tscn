@@ -85,10 +85,14 @@ jump_time = 3.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l787c")
-animation = &"idle"
+animation = &"struggle"
+frame_progress = 0.446578
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qchqy")
+
+[node name="CursorMarker" type="Marker2D" parent="."]
+position = Vector2(0, -8)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

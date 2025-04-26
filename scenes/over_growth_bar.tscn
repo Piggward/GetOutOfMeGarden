@@ -1,16 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b24hflvs220wc"]
+[gd_scene load_steps=4 format=3 uid="uid://b24hflvs220wc"]
 
 [ext_resource type="Script" uid="uid://cuctr26yfkumm" path="res://scripts/over_growth_bar.gd" id="1_7as2e"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="2_leuuk"]
-[ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="3_hov56"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mr7d1"]
-atlas = ExtResource("3_hov56")
-region = Rect2(16.2762, 97.8091, 15.7192, 43.4645)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jr475"]
-atlas = ExtResource("3_hov56")
-region = Rect2(0.173157, 98.5874, 12.9433, 38.0714)
+[ext_resource type="PackedScene" uid="uid://dxq2cnuc4d5rs" path="res://scenes/overgrowth_bar.tscn" id="3_hov56"]
 
 [node name="over_growth_bar" type="Node2D"]
 script = ExtResource("1_7as2e")
@@ -33,11 +25,5 @@ value = 3.0
 fill_mode = 3
 show_percentage = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-max_value = 25.0
-value = 22.0
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_mr7d1")
-texture_progress = SubResource("AtlasTexture_jr475")
+[node name="OvergrowthBar" parent="." instance=ExtResource("3_hov56")]
+script = ExtResource("1_7as2e")

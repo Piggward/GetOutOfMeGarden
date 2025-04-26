@@ -9,6 +9,7 @@ var flower_bed:FlowerBed
 @export var kill_flower_distance:float
 var isJumping:bool = false
 var timer:float = 0
+@onready var cursor_marker = $CursorMarker
 
 var flower
 
@@ -20,6 +21,7 @@ func _ready():
 	flower_bed = get_tree().get_first_node_in_group("flower_bed")
 	flower = flower_bed.get_random_alive_flower()
 	target_postition = flower.global_position
+	offset = cursor_marker.position
 	
 func jump():
 	isJumping = true

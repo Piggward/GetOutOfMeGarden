@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxq2cnuc4d5rs"]
+
+[ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="1_2nyfx"]
+[ext_resource type="Script" uid="uid://cuctr26yfkumm" path="res://scripts/over_growth_bar.gd" id="2_a2fy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr7d1"]
+atlas = ExtResource("1_2nyfx")
+region = Rect2(16.2762, 97.8091, 15.7192, 43.4645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr475"]
+atlas = ExtResource("1_2nyfx")
+region = Rect2(0.458183, 98.3769, 15.2288, 41.2194)
+margin = Rect2(0.2, 0.4, 0, 1.7)
+
+[node name="OvergrowthBar" type="TextureProgressBar"]
+texture_filter = 1
+custom_minimum_size = Vector2(98.175, 310.888)
+offset_left = 1.0
+offset_right = 101.0
+offset_bottom = 311.0
+rotation = 3.14159
+max_value = 25.0
+value = 25.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_mr7d1")
+texture_progress = SubResource("AtlasTexture_jr475")
+script = ExtResource("2_a2fy4")

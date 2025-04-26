@@ -4,6 +4,11 @@ extends Tool
 const GARDEN_SHEERS = preload("res://assets/farming_tools/GardenSheers.png")
 const GARDEN_SHEERS_CLOSED = preload("res://assets/farming_tools/GardenSheers_closed.png")
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var cursor_marker = $CursorMarker
+
+func _ready():
+	super._ready()
+	offset = cursor_marker.position
 
 func start_performing_action():
 	performing_action = true
