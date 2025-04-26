@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2tjxvguuvqcc"]
+[gd_scene load_steps=6 format=3 uid="uid://dl7tsd3138yyx"]
 
 [ext_resource type="Script" uid="uid://bu2ytkj620cv2" path="res://scenes/tools/shovel.gd" id="1_jkevs"]
 [ext_resource type="Texture2D" uid="uid://cow62jjlkenkf" path="res://assets/farming_tools/all_tools/Showel.png" id="2_jkevs"]
