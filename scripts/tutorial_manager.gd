@@ -22,7 +22,19 @@ var flowers: Array[Area2D] = []
 @onready var next_rect = $"../CanvasLayer/ToolTip/NextRect"
 @onready var animation_player = $AnimationPlayer
 
+@export var show_tutorial: bool = true
+
 func _ready():
+	if not show_tutorial:
+		await get_parent().ready
+		var s = SHOVEL.instantiate()
+		var ss = SCISSORS.instantiate()
+		get_parent().add_child(s)
+		get_parent().add_child(ss)
+		s.global_position = shovel_marker.global_position
+		ss.global_position = scissor_marker.global_position
+		tutorial_finished()
+		return
 	Global.has_interacted.connect(_on_first_interact)
 	Global.has_picked_up.connect(_on_first_pick_up)
 	tool_tip.visible = true
@@ -31,6 +43,13 @@ func _ready():
 	pointer.visible = true
 	next_rect.visible = false
 	animation_player.play("tutorial")
+	
+func tutorial_finished():
+	Global.tutorial = false
+	Global.game_start.emit()
+	tool_tip.visible = false
+	pointer.queue_free()
+	animation_player.play_backwards("tutorial")
 	
 func _on_first_interact(area: InteractableArea):
 	if area is Flower and not interacted.has("flower"):

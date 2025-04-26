@@ -303,6 +303,7 @@ region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 
 [node name="TutorialManager" type="Node" parent="."]
 script = ExtResource("1_h3kef")
+show_tutorial = false
 
 [node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
 position = Vector2(430, 185)
