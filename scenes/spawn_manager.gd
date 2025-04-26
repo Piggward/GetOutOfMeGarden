@@ -1,66 +1,75 @@
 extends Node2D
 
-@export var spawn_area_size: Vector2 = Vector2(300,300)
+@onready var spawn_area: Node2D = $Area
+@onready var spawned_objects: Node2D = $SpawnedObjects
 
-@onready var area := $Area 
+@export var spawn_area_width: float = 500.0  # Width of the spawn area
+@export var spawn_area_height: float = 500.0  # Height of the spawn area
 
-@export var spawnables: Dictionary = {
+var spawnables: Dictionary = {
 	"weed": {
 		"scene": preload("res://scenes/weed.tscn"),
-		"size": Vector2(16, 16)
+		"size": Vector2(16,16)
 	}
 }
 
 func _ready():
-	position = get_viewport_rect().size / 2
-	queue_redraw()
-	for i in 10:
-		try_spawn_object("weed")
-	
-func get_spawn_area() -> Rect2:
-	return Rect2(position - spawn_area_size / 2, spawn_area_size)
-	
-func _draw():
-	var half = spawn_area_size / 2
-	draw_rect(Rect2(-half, spawn_area_size), Color.GREEN, false)
-	
-func get_random_position(object_size: Vector2) -> Vector2:
-	var half_area = spawn_area_size / 2
-	var half_object = object_size / 2
+	# Set the spawn area size according to the input values
+	spawn_area.position = spawn_area.position  # Just to ensure it's correctly placed in the scene
+	spawn_area.scale = Vector2.ONE  # Reset scale, we won't use it anymore
+	spawn_area.set("rect_size", Vector2(spawn_area_width, spawn_area_height))  # Adjust size
 
-	var x = randf_range(-half_area.x + half_object.x, half_area.x - half_object.x)
-	var y = randf_range(-half_area.y + half_object.y, half_area.y - half_object.y)
-
-	return position + Vector2(x, y)
+	queue_redraw()  # Draw the debug border
 	
-func is_space_free_at_position(position: Vector2, size: Vector2) -> bool:
+	debug_spawn_loop()
+
+func spawn_object(object_name: String) -> void:
+	if not spawnables.has(object_name): return
+		
+	var object_scene = spawnables[object_name]["scene"]
+	var object_size = spawnables[object_name]["size"]
+	var max_checks = 10
+	for i in max_checks:
+		var pos = get_random_position()
+		if is_space_free_at_position(pos, object_size):
+			var instance = object_scene.instantiate()
+			instance.position = pos
+			instance.z_index = 10  # Make sure it renders in front
+			spawned_objects.add_child(instance)
+			return
+	print("No available space found to spawn object: [%s] with size: [%s]." % [object_name, object_size])
+
+func get_random_position() -> Vector2:
+	# Use the dimensions directly to get random spawn position within the defined area
+	var half_width = spawn_area_width / 2
+	var half_height = spawn_area_height / 2
+	var x = randf_range(-half_width, half_width)
+	var y = randf_range(-half_height, half_height)
+	return spawn_area.position + Vector2(x, y)  # Use local position of the area
+
+func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
 
 	var shape = RectangleShape2D.new()
-	shape.extents = size / 2  # Godot uses half-size (extents)
+	shape.extents = size / 2
 
 	var params = PhysicsShapeQueryParameters2D.new()
 	params.shape = shape
-	params.transform = Transform2D.IDENTITY.translated(position)
-	params.collide_with_areas = true
+	params.transform = Transform2D.IDENTITY.translated(pos)
 	params.collide_with_bodies = true
+	params.collide_with_areas = true
 
 	return space_state.intersect_shape(params, 1).is_empty()
+
+func _draw() -> void:
+	# Draw the spawn area size using the input dimensions
+	var size = Vector2(spawn_area_width, spawn_area_height)
+	var half = size / 2
+	draw_rect(Rect2(spawn_area.position - half, size), Color.GREEN, false, 2.0)
 	
-func try_spawn_object(name: String):
-	var object_to_spawn: PackedScene = spawnables[name]["scene"]
-	var object_size: Vector2 = spawnables[name]["size"]
-	var try_count = 0
+func debug_spawn_loop() -> void:
 	while true:
-		try_count += 1
-		if try_count == 5:
-			print("[SpawnManager#spawn_object] Failed to find suitable spawnlocation after 5 tries")
-			break
-		var pos = get_random_position(object_size)
+		spawn_object("weed")
+		await get_tree().create_timer(.1).timeout
 		
-		if is_space_free_at_position(pos, object_size):
-			var instance = object_to_spawn.instantiate()
-			instance.position = pos
-			$"SpawnedObjects".add_child(instance)
-			print("Spawned %s object at: %s" % [name, pos])
-			return  # Object successfully spawned, exit the loop
+	
