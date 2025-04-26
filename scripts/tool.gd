@@ -16,7 +16,8 @@ func _ready():
 	
 func _on_area_detected(area: InteractableArea):
 	interactable_areas.append(area)
-	area.die.connect(_on_area_left)
+	if not area.die.is_connected(_on_area_left):
+		area.die.connect(_on_area_left)
 	
 func _on_area_left(area):
 	if interactable_areas.has(area):

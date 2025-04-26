@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_y6jdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
-size = Vector2(15.9824, 16.7815)
+size = Vector2(20.7771, 20.7771)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubv7k"]
 size = Vector2(11.8658, 11.8658)
@@ -17,14 +17,13 @@ input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_jkevs")
-efficiency = null
-damp = null
-max_velocity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.38419e-07, 0.5)
+position = Vector2(-5.36442e-07, -1.78814e-07)
 scale = Vector2(1.25138, 1.25138)
 shape = SubResource("RectangleShape2D_obcea")
+
+[node name="Node" type="Node" parent="CollisionShape2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0253534, 0.0253534)

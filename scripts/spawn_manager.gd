@@ -26,7 +26,9 @@ func _ready():
 	pass
 	
 # spawn_rate in s
-func start_spawning_object(object_name: String, spawn_rate: int) -> void:
+func start_spawning_object(object_name: String, spawn_rate: float) -> void:
+	if spawn_rate <= 0:
+		return
 	var timer = Timer.new()
 	timer.name = "SpawnTimer[%s]" % object_name  # Optional: helpful for debugging
 	timer.wait_time = spawn_rate
