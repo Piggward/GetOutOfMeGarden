@@ -12,8 +12,6 @@ var timer:float = 0
 
 var flower
 
-
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready(): 
@@ -57,5 +55,10 @@ func _setheld(value:bool):
 	if(!value):
 		animated_sprite_2d.play("idle")
 	
-	
-	
+func _on_mouse_entered() -> void:
+	mouse_enter = true
+	pass # Replace with function body.
+
+func _on_mouse_exited() -> void:
+	mouse_enter = false
+	pass # Replace with function body.

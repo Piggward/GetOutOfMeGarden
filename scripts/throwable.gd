@@ -14,7 +14,6 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("left_click") and player.can_pick_up() and mouse_enter:
-		player.pick_up(self)
 		_setheld(true)
 		freeze = true
 		linear_velocity = Vector2.ZERO
@@ -22,7 +21,6 @@ func _input(event):
 		linear_damp = 0
 	elif event.is_action_released("left_click") and is_held:
 		freeze_mode = FreezeMode.FREEZE_MODE_KINEMATIC
-		player.release()
 		_setheld(false)
 		freeze = false
 		linear_velocity = throw_velocity.clamp(Vector2(-max_velocity, -max_velocity), Vector2(max_velocity, max_velocity))
@@ -37,3 +35,7 @@ func _physics_process(delta):
 
 func _setheld(value:bool):
 	is_held = value
+	if value:
+		player.pick_up(self)
+	else:
+		player.release()
