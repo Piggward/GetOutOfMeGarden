@@ -647,6 +647,8 @@ animations = [{
 script = ExtResource("1_8x8dx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.997497, 1)
 sprite_frames = SubResource("SpriteFrames_dne62")
 speed_scale = 0.0
 

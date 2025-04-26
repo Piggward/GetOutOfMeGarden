@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://tr6x00wjuvlf"]
+
+[ext_resource type="PackedScene" uid="uid://c6c865k555axr" path="res://scenes/green_explosion_particles.tscn" id="1_u6yoj"]
+
+[node name="green_explotion" type="Node2D"]
+
+[node name="green_explosion" parent="." instance=ExtResource("1_u6yoj")]

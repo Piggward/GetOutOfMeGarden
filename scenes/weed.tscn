@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd711j20uj8os"]
+[gd_scene load_steps=5 format=3 uid="uid://bd711j20uj8os"]
 
 [ext_resource type="Script" uid="uid://bwpo7cm767750" path="res://scripts/weed.gd" id="1_3sedy"]
 [ext_resource type="PackedScene" path="res://scenes/weeds_art.tscn" id="2_egm0q"]
+[ext_resource type="PackedScene" uid="uid://c6c865k555axr" path="res://scenes/green_explosion_particles.tscn" id="3_egm0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqta8"]
 
@@ -18,5 +19,7 @@ shape = SubResource("RectangleShape2D_uqta8")
 [node name="AnimatedSprite2D" parent="weed_art" index="0"]
 frame = 2
 frame_progress = 0.573807
+
+[node name="green_explosion" parent="." instance=ExtResource("3_egm0q")]
 
 [editable path="weed_art"]

@@ -73,6 +73,7 @@ scale_min = 0.01
 scale_max = 0.02
 scale_curve = SubResource("CurveTexture_d3b0s")
 color = Color(0.341176, 0.847059, 1, 1)
+collision_mode = 2
 
 [node name="WateringCan" type="RigidBody2D"]
 collision_layer = 4
@@ -84,11 +85,11 @@ script = ExtResource("1_rm0o0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.0364586, 0.0364586)
+scale = Vector2(0.0260491, 0.0260491)
 texture = ExtResource("2_q2shw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.83207, 1.83207)
+scale = Vector2(1.36458, 1.36458)
 shape = SubResource("CircleShape2D_4ftxe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -106,37 +107,12 @@ shape = SubResource("CapsuleShape2D_4ftxe")
 position = Vector2(-4, 12)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="WaterMarker"]
+light_mask = 256
+position = Vector2(0, -1)
 emitting = false
 amount = 15
 texture = ExtResource("3_q2shw")
-process_material = SubResource("ParticleProcessMaterial_ah6fy")
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="WaterMarker"]
-position = Vector2(-4, -5)
-emitting = false
-amount = 15
-texture = ExtResource("3_q2shw")
-process_material = SubResource("ParticleProcessMaterial_ah6fy")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="WaterMarker"]
-position = Vector2(-1, -4)
-emitting = false
-amount = 15
-texture = ExtResource("3_q2shw")
-process_material = SubResource("ParticleProcessMaterial_ah6fy")
-
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="WaterMarker"]
-position = Vector2(2, -2)
-emitting = false
-amount = 15
-texture = ExtResource("3_q2shw")
-process_material = SubResource("ParticleProcessMaterial_ah6fy")
-
-[node name="GPUParticles2D5" type="GPUParticles2D" parent="WaterMarker"]
-position = Vector2(5, 1)
-emitting = false
-amount = 15
-texture = ExtResource("3_q2shw")
+visibility_rect = Rect2(-17, 0, 22, 100)
 process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
