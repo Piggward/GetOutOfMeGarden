@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx83b8dydnol3"]
+
+[ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="1_kx1v6"]
+[ext_resource type="Script" uid="uid://cvcchcdlvtrum" path="res://scripts/interactable_area.gd" id="2_t5whd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hew2r"]
+size = Vector2(718, 121)
+
+[node name="test" type="Node2D"]
+
+[node name="InteractableArea" type="Area2D" parent="."]
+position = Vector2(397, 320)
+script = ExtResource("2_t5whd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(135, 50.5)
+shape = SubResource("RectangleShape2D_hew2r")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_kx1v6")]
+position = Vector2(551, 183)

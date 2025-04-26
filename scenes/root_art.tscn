@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://rnu4pekwbllv"]
+
+[ext_resource type="Texture2D" uid="uid://d30thpcpjnm0h" path="res://assets/tiles/tiles.png" id="1_kgfnl"]
+[ext_resource type="Script" uid="uid://jplf02h1rf18" path="res://scripts/animated_sprite_start.gd" id="2_rj0qr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj0qr"]
+atlas = ExtResource("1_kgfnl")
+region = Rect2(128, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unv2r"]
+atlas = ExtResource("1_kgfnl")
+region = Rect2(96, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rlid"]
+atlas = ExtResource("1_kgfnl")
+region = Rect2(112, 400, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1b3py"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj0qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unv2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rlid")
+}],
+"loop": false,
+"name": &"animation_1",
+"speed": 2.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1b3py")
+animation = &"animation_1"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("2_rj0qr")

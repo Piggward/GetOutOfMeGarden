@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://diw30lbl5hmhb"]
+
+[ext_resource type="Texture2D" uid="uid://colh8cgr7vtq4" path="res://assets/farming/crops_all.png" id="1_cvjfl"]
+[ext_resource type="Script" uid="uid://jplf02h1rf18" path="res://scripts/animated_sprite_start.gd" id="2_piipe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk2x8"]
+atlas = ExtResource("1_cvjfl")
+region = Rect2(320, 144, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thbcb"]
+atlas = ExtResource("1_cvjfl")
+region = Rect2(336, 144, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i11i3"]
+atlas = ExtResource("1_cvjfl")
+region = Rect2(352, 144, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsip1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk2x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thbcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i11i3")
+}],
+"loop": false,
+"name": &"animation_1",
+"speed": 2.0
+}]
+
+[node name="weed_art" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vsip1")
+animation = &"animation_1"
+script = ExtResource("2_piipe")
