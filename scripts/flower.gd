@@ -28,9 +28,10 @@ func interact(tool_used: String):
 		return
 	
 	can_interact = false
-	interaction_timer.start(0.2)
+	interaction_timer.start(0.5)
 	
 	if current_water_liters >= max_water_liters:
+		current_water_liters = max_water_liters
 		return
 	elif current_water_liters < max_water_liters:
 		current_water_liters += watering_speed
@@ -42,7 +43,7 @@ func set_growth_stage(id: int):
 	growth_timer.paused = false
 
 func _ready():
-	watering_speed = max_water_liters/watering_speed_factor
+	watering_speed = max_water_liters * watering_speed_factor
 	growth_timer.paused = false
 # GROW
 func _on_grow_timer_timeout() -> void:
