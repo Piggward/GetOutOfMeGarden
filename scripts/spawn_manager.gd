@@ -10,10 +10,6 @@ var spawnables: Dictionary = {
 	"flower": {
 		"scene": preload("res://scenes/flower.tscn"),
 		"size": Vector2(16,16)
-	},
-	"weed": {
-		"scene": preload("res://scenes/weeds_art.tscn"),
-		"size": Vector2(16,16)
 	}
 }
 
@@ -61,7 +57,14 @@ func is_space_free_at_position(pos: Vector2, size: Vector2) -> bool:
 	
 func debug_spawn_loop() -> void:
 	while true:
-		spawn_object("weed")
-		await get_tree().create_timer(.1).timeout
+		spawn_object("flower")
+		await get_tree().create_timer(1.0).timeout
+		
+# UNCOMMENT ME IF YOU WANT TO SEE OUTLINE OF SPAWNABLEAREA!
+#func _draw():
+	#var half_size := Vector2(spawn_area_width, spawn_area_height) / 2
+	#var top_left := spawn_area.position - half_size
+	#var rect := Rect2(top_left, half_size * 2)
+	#draw_rect(rect, Color.GREEN, false, 2.0)
 		
 	
