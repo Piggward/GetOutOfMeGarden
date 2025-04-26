@@ -52,3 +52,8 @@ func _on_wave_timer_timeout() -> void:
 	start_next_wave_timer.one_shot = true
 	start_next_wave_timer.connect("timeout", Callable(self, "_on_start_next_wave_timer_timeout"))
 	start_next_wave_timer.start()
+
+
+func _on_flower_bed_flowers_died() -> void:
+	print("YOU LOSE SCRUB XDP")
+	pass # Replace with function body.

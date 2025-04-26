@@ -5,8 +5,8 @@ class_name SpawnManager
 
 @export var spawn_area_width: float = 500.0  # Width of the spawn area
 @export var spawn_area_height: float = 500.0  # Height of the spawn area
-const WEED = preload("res://scenes/weeds_art.tscn")
-const ROOT = preload("res://scenes/root_art.tscn")
+const WEED = preload("res://scenes/weed.tscn")
+const ROOT = preload("res://scenes/root.tscn")
 
 signal on_spawn
 

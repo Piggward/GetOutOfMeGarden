@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1yxfixs7qmcd"]
+[gd_scene load_steps=5 format=3 uid="uid://cj154uebbt08s"]
 
-[ext_resource type="Script" uid="uid://daa88o7nurhxy" path="res://scripts/root.gd" id="1_lrqlo"]
+[ext_resource type="Script" path="res://scripts/root.gd" id="1_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://c6c865k555axr" path="res://scenes/green_explosion_particles.tscn" id="3_jh1ax"]
 [ext_resource type="PackedScene" uid="uid://rnu4pekwbllv" path="res://scenes/root_art.tscn" id="3_lrqlo"]
 
