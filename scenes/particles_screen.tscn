@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvk6ijtsp4gtu"]
+
+[ext_resource type="Script" uid="uid://bpjcedjcbkt1s" path="res://scenes/particles_screen.gd" id="1_aasvh"]
+[ext_resource type="PackedScene" uid="uid://cduepc8sltbon" path="res://scenes/brown_explosion_particles.tscn" id="2_rvh4x"]
+[ext_resource type="PackedScene" uid="uid://xh17gek584h7" path="res://scenes/spawn_tool_particle.tscn" id="3_xi5vg"]
+[ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="4_imca5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aasvh"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ParticlesScreen" type="Node2D"]
+script = ExtResource("1_aasvh")
+
+[node name="green_explosion" parent="." instance=ExtResource("2_rvh4x")]
+
+[node name="SpawnToolStar" parent="." instance=ExtResource("3_xi5vg")]
+
+[node name="green_explosion2" parent="." instance=ExtResource("2_rvh4x")]
+
+[node name="WateringCan" parent="." instance=ExtResource("4_imca5")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aasvh")
+
+[editable path="WateringCan"]

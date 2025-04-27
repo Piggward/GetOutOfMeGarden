@@ -41,9 +41,6 @@ func _ready():
 		tool_area.add_child(watering_can)
 		tutorial_finished()
 		return
-	music.play()
-	await get_tree().create_timer(1).timeout
-	music.get_stream_playback().switch_to_clip_by_name(&"Garden Main Loop")
 	watering_can = WATERING_CAN.instantiate()
 	watering_can.global_position = vatten_kanna_marker.global_position
 	tool_area.add_child(watering_can)
@@ -55,6 +52,9 @@ func _ready():
 	pointer.visible = true
 	next_rect.visible = false
 	animation_player.play("tutorial")
+	music.play()
+	await get_tree().create_timer(1).timeout
+	music.get_stream_playback().switch_to_clip_by_name(&"Garden Main Loop")
 	
 func tutorial_finished():
 	print("done with tutorial?=?????")

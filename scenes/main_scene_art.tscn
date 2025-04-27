@@ -338,7 +338,6 @@ process_mode = 1
 
 [node name="TutorialManager" type="Node" parent="."]
 script = ExtResource("1_h3kef")
-show_tutorial = false
 
 [node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
 position = Vector2(430, 185)
