@@ -14,6 +14,8 @@ var root_timer:Timer
 @export var wave3_bunny_amount:float
 @export var wave4_bunny_amount:float
 
+@export var wave4_fish_timer:float = 10
+
 
 enum GameState {
 	START,
@@ -68,6 +70,7 @@ func _on_start_next_wave_timer_timeout() -> void:
 	current_state = next_state
 	
 	# TODO: tell SpawnManager what state we are in/update spawnables objects (and/or their spawnrate)
+	var flower_progress = current_state
 	match current_state:
 		GameState.WAVE_1:
 			weed_timer = spawn_manager.start_spawning_object("weed", wave1_weed_amount)
@@ -83,9 +86,10 @@ func _on_start_next_wave_timer_timeout() -> void:
 			weed_timer.wait_time=wave4_weed_amount
 			root_timer.wait_time = wave4_root_amount
 			bunny_manager._set_spawn_rate(wave4_bunny_amount)
-			# TODO
+			fisherman.start_fish_spawn_timer(wave4_fish_timer)
+			flower_progress = GameState.WAVE_3
 			pass
-	flower_bed.set_growth_stage(current_state)
+	flower_bed.set_growth_stage(flower_progress)
 	wave_timer.start()	
 
 func _on_wave_timer_timeout() -> void:

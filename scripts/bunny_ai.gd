@@ -7,7 +7,7 @@ var flower_bed:FlowerBed
 @export var jump_distance:float
 @export var jump_speed:float
 @export var jump_time:float
-@export var kill_flower_distance:float
+@export var kill_flower_distance:float = 10
 var isJumping:bool = false
 var timer:float = 0
 @onready var cursor_marker = $CursorMarker
@@ -82,7 +82,6 @@ func _process(delta: float) -> void:
 		timer += delta
 		if(timer > jump_time):
 			jump()
-	
 	if(global_position.distance_to(target_postition)<kill_flower_distance):
 		flower._kill()
 		if $AudioListener2D.stream not in bunny_eat_sounds:

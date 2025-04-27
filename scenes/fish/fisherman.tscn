@@ -369,4 +369,7 @@ rotation = -1.85335
 rotates = false
 loop = false
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="FishAnim" to="." method="_on_fish_anim_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
