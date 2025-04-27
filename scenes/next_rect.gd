@@ -7,7 +7,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 
 func _on_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("right_click"):
 		next_pressed.emit()
 	pass # Replace with function body.
 
