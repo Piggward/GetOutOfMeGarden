@@ -2,6 +2,8 @@ extends Node
 
 @onready var wave_timer: Timer = $WaveTimer
 #spawn rates
+var weed_timer:Timer
+var root_timer:Timer
 @export var wave1_weed_amount:float
 @export var wave2_weed_amount:float
 @export var wave3_weed_amount:float
@@ -54,18 +56,19 @@ func _on_start_next_wave_timer_timeout() -> void:
 	# TODO: tell SpawnManager what state we are in/update spawnables objects (and/or their spawnrate)
 	match current_state:
 		GameState.WAVE_1:
-			spawn_manager.start_spawning_object("weed", wave1_weed_amount)
+			weed_timer = spawn_manager.start_spawning_object("weed", wave1_weed_amount)
 		GameState.WAVE_2:
-			spawn_manager.start_spawning_object("weed", wave2_weed_amount)
-			spawn_manager.start_spawning_object("root", wave2_root_amount)
+			weed_timer.wait_time = wave2_weed_amount
+			root_timer = spawn_manager.start_spawning_object("root", wave2_root_amount)
 		GameState.WAVE_3:
-			spawn_manager.start_spawning_object("weed", wave3_weed_amount)
-			spawn_manager.start_spawning_object("root", wave3_root_amount)
-			bunny_manager._set_spawn_rate(5)
+			bunny_manager._set_spawn_rate(wave3_bunny_amount)
 			bunny_manager.set_spawn(true)
+			weed_timer.wait_time=wave3_weed_amount
+			root_timer.wait_time = wave3_root_amount
 		GameState.WAVE_4:
-			spawn_manager.start_spawning_object("weed", wave4_weed_amount)
-			spawn_manager.start_spawning_object("root", wave4_root_amount)
+			weed_timer.wait_time=wave4_weed_amount
+			root_timer.wait_time = wave4_root_amount
+			bunny_manager._set_spawn_rate(wave4_bunny_amount)
 			# TODO
 			pass
 	
