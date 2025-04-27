@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=64 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
@@ -19,6 +19,34 @@
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="18_01anq"]
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
+[ext_resource type="Script" uid="uid://bssmjuglarusr" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
+
+[sub_resource type="Animation" id="Animation_emd7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Boundries/Bounds/CollisionShape2D7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(211.25, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Boundries/ToolArea/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(343.5, 156)]
+}
 
 [sub_resource type="Animation" id="Animation_wau27"]
 resource_name = "tutorial"
@@ -46,33 +74,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(343.5, 155), Vector2(343.5, 219)]
-}
-
-[sub_resource type="Animation" id="Animation_emd7q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Boundries/Bounds/CollisionShape2D7:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(211.25, 48)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Boundries/ToolArea/CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(343.5, 156)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ta3j7"]
@@ -299,11 +300,14 @@ polygon = PackedVector2Array(243, 286, 243, 276, 444, 276, 444, 287)
 atlas = ExtResource("18_01anq")
 region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_01anq"]
+atlas = ExtResource("18_01anq")
+region = Rect2(65.5548, 37.3099, 60.6124, 22.1226)
+
 [node name="Node2D2" type="Node2D"]
 
 [node name="TutorialManager" type="Node" parent="."]
 script = ExtResource("1_h3kef")
-show_tutorial = false
 
 [node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
 position = Vector2(430, 185)
@@ -515,8 +519,10 @@ offset_right = 226.175
 offset_bottom = 673.0
 
 [node name="TextureRect" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.01
@@ -529,6 +535,7 @@ offset_bottom = 164.0
 grow_horizontal = 2
 
 [node name="NextRect" type="TextureRect" parent="CanvasLayer/ToolTip"]
+visible = false
 layout_mode = 0
 offset_left = 420.0
 offset_top = 184.0
@@ -554,12 +561,65 @@ text = "NEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_01anq")
+script = ExtResource("20_emd7q")
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayButton/TextureRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.588
+offset_top = -11.0
+offset_right = 1.588
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
 [connection signal="flowers_died" from="FlowerBed" to="GameManager" method="_on_flower_bed_flowers_died"]
 [connection signal="gui_input" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_gui_input"]
 [connection signal="mouse_entered" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_mouse_exited"]
 
 [editable path="SpawnableArea"]
 [editable path="WateringCan"]

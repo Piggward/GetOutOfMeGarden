@@ -25,6 +25,9 @@ var flowers: Array[Area2D] = []
 @export var show_tutorial: bool = true
 
 func _ready():
+	Global.tutorial_start.connect(start)
+
+func start():
 	if not show_tutorial:
 		await get_parent().ready
 		var s = SHOVEL.instantiate()

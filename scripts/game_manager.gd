@@ -1,6 +1,7 @@
 extends Node
 
 @onready var wave_timer: Timer = $WaveTimer
+@onready var play_button = $"../CanvasLayer/PlayButton" # Since PlayButton is a sibling to GameManager
 
 enum GameState {
 	START,
@@ -14,6 +15,10 @@ enum GameState {
 var current_state: GameState = GameState.START
 
 const SpawnManagerScene = preload("res://scenes/spawnable_area.tscn")
+
+func _ready():
+	play_button.pressed.connect(_on_play_button_pressed)
+	wave_timer.stop()
 
 func next_wave() -> GameState:
 	match current_state:
@@ -39,7 +44,7 @@ func _on_start_next_wave_timer_timeout() -> void:
 			# TODO
 			pass
 	
-	wave_timer.start()	
+	wave_timer.start()
 
 func _on_wave_timer_timeout() -> void:
 	wave_timer.stop()
@@ -57,3 +62,8 @@ func _on_wave_timer_timeout() -> void:
 func _on_flower_bed_flowers_died() -> void:
 	print("YOU LOSE SCRUB XDP")
 	pass # Replace with function body.
+	
+func _on_play_button_pressed() -> void:
+	if current_state != GameState.START:
+		print("[GameManager#_on_play_button_pressed] Unkown current_state: [%s], going back to GameState.START" % str(current_state))
+	Global.tutorial_start.emit()
