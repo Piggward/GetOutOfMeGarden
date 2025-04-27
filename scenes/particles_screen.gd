@@ -12,5 +12,5 @@ func _ready():
 	for child in water_marker.get_children():
 		child.emitting = true
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://scenes/main_scene_art.tscn")
