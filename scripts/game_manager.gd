@@ -64,7 +64,8 @@ func next_wave() -> GameState:
 	return GameState.START
 	
 func _on_start_next_wave_timer_timeout() -> void:
-	if current_state == GameState.WAVE_4: return
+	if current_state == GameState.WAVE_4: 
+		Global.game_over.emit(true)
 	var next_state = next_wave()
 	print("[GameManager#_on_start_next_wave_timer_timeout] Update state from: [%s], to: [%s]" % [current_state, next_state])
 	current_state = next_state
@@ -111,6 +112,7 @@ func _on_wave_timer_timeout() -> void:
 
 func _on_flower_bed_flowers_died() -> void:
 	print("YOU LOSE SCRUB XDP")
+	Global.game_over.emit(false)
 	pass # Replace with function body.
 
 

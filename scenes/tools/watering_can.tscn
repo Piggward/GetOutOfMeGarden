@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbopquiuges8" path="res://scenes/tools/watering_can.gd" id="1_rm0o0"]
 [ext_resource type="Texture2D" uid="uid://xoywtnsrog8x" path="res://assets/farming_tools/WateringCan.png" id="2_q2shw"]
-[ext_resource type="PackedScene" path="res://scenes/detect_interactable_area.tscn" id="3_4ftxe"]
+[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_4ftxe"]
 [ext_resource type="Texture2D" uid="uid://dbsjhqinm08w0" path="res://assets/particles/muzzle_02.png" id="3_q2shw"]
 [ext_resource type="AudioStream" uid="uid://rypnhcunbkgr" path="res://assets/audio/water_pour.wav" id="5_d3b0s"]
 

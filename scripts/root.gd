@@ -5,14 +5,12 @@ extends InteractableArea
 var dead: bool = false
 const STUMP = preload("res://scenes/stump.tscn")
 @onready var animated_sprite_2d: AnimatedSprite2D = $root_art/AnimatedSprite2D
-const GREEN_EXPLOSION_PARTICLES = preload("res://scenes/green_explosion_particles.tscn")
+const BROWN_EXPLOSION_PARTICLES = preload("res://scenes/brown_explosion_particles.tscn")
 var spawn_sounds = [
 	preload("res://assets/audio/root_spawn_1.wav"),
 	preload("res://assets/audio/root_spawn_2.wav"),
 ]
-
 signal dug
-
 func _ready() -> void:
 	var audio = $AudioStreamPlayer2D
 	audio.stream = spawn_sounds[randi_range(0, spawn_sounds.size()-1)]
@@ -28,7 +26,7 @@ func interact(tool_used: String = ""):
 		self.damage()
 	
 func damage():
-	var expl = GREEN_EXPLOSION_PARTICLES.instantiate()
+	var expl = BROWN_EXPLOSION_PARTICLES.instantiate()
 	get_tree().root.add_child(expl)
 	expl.global_position = self.global_position
 	expl.emitting = true
