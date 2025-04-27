@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ue117ad88ghi"]
+[gd_scene load_steps=16 format=3 uid="uid://ue117ad88ghi"]
 
 [ext_resource type="Script" uid="uid://cbopquiuges8" path="res://scenes/tools/watering_can.gd" id="1_rm0o0"]
 [ext_resource type="Texture2D" uid="uid://xoywtnsrog8x" path="res://assets/farming_tools/WateringCan.png" id="2_q2shw"]
-[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_4ftxe"]
+[ext_resource type="PackedScene" path="res://scenes/detect_interactable_area.tscn" id="3_4ftxe"]
 [ext_resource type="Texture2D" uid="uid://dbsjhqinm08w0" path="res://assets/particles/muzzle_02.png" id="3_q2shw"]
+[ext_resource type="AudioStream" uid="uid://rypnhcunbkgr" path="res://assets/audio/water_pour.wav" id="5_d3b0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ftxe"]
 
@@ -314,6 +315,10 @@ process_material = SubResource("ParticleProcessMaterial_ah6fy")
 
 [node name="CursorMarker" type="Marker2D" parent="."]
 position = Vector2(4, -9)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_d3b0s")
+volume_db = -3.962
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

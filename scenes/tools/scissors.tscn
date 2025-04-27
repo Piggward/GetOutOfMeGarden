@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyob4bvq34o1d"]
+[gd_scene load_steps=7 format=3 uid="uid://cyob4bvq34o1d"]
 
 [ext_resource type="Texture2D" uid="uid://btrevxwhwbtfs" path="res://assets/farming_tools/GardenSheers.png" id="1_136eo"]
 [ext_resource type="Script" uid="uid://phrmcrewi78b" path="res://scenes/tools/scissors.gd" id="1_i6u0j"]
-[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="4_ubv7k"]
+[ext_resource type="AudioStream" uid="uid://v4hslg25ptsc" path="res://assets/audio/scissor_air.wav" id="4_p7jo4"]
+[ext_resource type="PackedScene" path="res://scenes/detect_interactable_area.tscn" id="4_ubv7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
 
@@ -35,6 +36,9 @@ shape = SubResource("RectangleShape2D_ubv7k")
 
 [node name="CursorMarker" type="Marker2D" parent="."]
 position = Vector2(-2, 9)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p7jo4")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

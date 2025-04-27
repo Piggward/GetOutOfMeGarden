@@ -17,4 +17,4 @@ shape = SubResource("RectangleShape2D_uqta8")
 [node name="root_art" parent="." instance=ExtResource("3_lrqlo")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.4
+volume_db = 5.0

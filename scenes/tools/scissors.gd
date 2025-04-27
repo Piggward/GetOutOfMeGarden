@@ -13,6 +13,8 @@ func _ready():
 func start_performing_action():
 	performing_action = true
 	sprite_2d.texture = GARDEN_SHEERS_CLOSED
+	$AudioStreamPlayer2D.pitch_scale = randf_range(0.9, 1.4)
+	$AudioStreamPlayer2D.play()
 	pass
 	
 func stop_performing_action():

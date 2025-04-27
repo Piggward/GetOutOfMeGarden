@@ -43,9 +43,15 @@ func damage():
 	var audio = $AudioStreamPlayer2D
 	audio.stream = death_sounds[randi_range(0, death_sounds.size()-1)]
 	audio.pitch_scale = randf_range(1.0, 1.6)
+	audio.volume_db = 11.0
 	audio.play()
 
 func kill():
 	animated_sprite_2d.visible = false
 	die.emit(self)
+	$DeathTimer.start()
+	#self.queue_free()
+
+
+func _free_my_soul() -> void:
 	self.queue_free()

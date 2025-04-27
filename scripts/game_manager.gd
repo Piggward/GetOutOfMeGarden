@@ -24,7 +24,17 @@ enum GameState {
 }
 
 @onready var bunny_manager: Node2D = $"../BunnyManager"
+@onready var fisherman: Node2D = $"../Fisherman"
 
+var main_bg_music: Array[AudioStreamWAV] = [
+	preload("res://assets/audio/main_loop_1.wav"),
+	preload("res://assets/audio/main_loop_2.wav"),
+	preload("res://assets/audio/main_loop_3.wav"),
+	preload("res://assets/audio/main_loop_4.wav")
+]
+var main_bg_transition_track: AudioStreamWAV = preload("res://assets/audio/main_loop_2_5.wav")
+@onready var main_audio: AudioStreamPlayer = $AudioStreamPlayer
+var tranistioned_audio = false
 #var spawn_manager: Node
 @onready var spawn_manager: Node = $"../SpawnableArea"
 var current_state: GameState = GameState.START
@@ -56,7 +66,10 @@ func _on_start_next_wave_timer_timeout() -> void:
 	# TODO: tell SpawnManager what state we are in/update spawnables objects (and/or their spawnrate)
 	match current_state:
 		GameState.WAVE_1:
-			weed_timer = spawn_manager.start_spawning_object("root", wave1_weed_amount)
+			main_audio.stream = main_bg_music[0]
+			main_audio.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_DISABLED
+			main_audio.play()
+			weed_timer = spawn_manager.start_spawning_object("weed", wave1_weed_amount)
 		GameState.WAVE_2:
 			weed_timer.wait_time = wave2_weed_amount
 			root_timer = spawn_manager.start_spawning_object("root", wave2_root_amount)
@@ -84,7 +97,7 @@ func _on_wave_timer_timeout() -> void:
 	if(current_state == GameState.WAVE_3):
 		start_next_wave_timer.wait_time = 45.0 # Wait 5.0s for now
 	else:
-		start_next_wave_timer.wait_time = 20.0 # Wait 5.0s for now
+		start_next_wave_timer.wait_time = 12.0 # Wait 5.0s for now
 	start_next_wave_timer.one_shot = true
 	start_next_wave_timer.connect("timeout", Callable(self, "_on_start_next_wave_timer_timeout"))
 	start_next_wave_timer.start()
@@ -93,3 +106,16 @@ func _on_wave_timer_timeout() -> void:
 func _on_flower_bed_flowers_died() -> void:
 	print("YOU LOSE SCRUB XDP")
 	pass # Replace with function body.
+
+
+func _on_audio_stream_player_finished() -> void:
+	var next_song = main_bg_music[(current_state) - 1]
+	if main_audio.stream != next_song:
+		if current_state == GameState.WAVE_3 and not tranistioned_audio:
+			tranistioned_audio = true
+			main_audio.stream = main_bg_transition_track
+		else:
+			main_audio.stream = next_song
+	main_audio.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_DISABLED
+
+	main_audio.play()

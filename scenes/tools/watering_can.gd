@@ -14,6 +14,7 @@ func _ready():
 func start_performing_action():
 	animation_player.play("water")
 	holding_action = true
+	$AudioStreamPlayer2D.play()
 	pass
 	
 func start_watering():
@@ -24,6 +25,8 @@ func start_watering():
 		child.emitting = true
 	
 func stop_performing_action():
+	if $AudioStreamPlayer2D.playing:
+		$AudioStreamPlayer2D.stop()
 	if not holding_action:
 		return
 	reset()
