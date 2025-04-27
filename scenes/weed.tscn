@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd711j20uj8os"]
+[gd_scene load_steps=6 format=3 uid="uid://bd711j20uj8os"]
 
 [ext_resource type="Script" uid="uid://bwpo7cm767750" path="res://scripts/weed.gd" id="1_3sedy"]
-[ext_resource type="PackedScene" uid="uid://diw30lbl5hmhb" path="res://scenes/weeds_art.tscn" id="2_egm0q"]
+[ext_resource type="PackedScene" path="res://scenes/weeds_art.tscn" id="2_egm0q"]
 [ext_resource type="PackedScene" uid="uid://c6c865k555axr" path="res://scenes/green_explosion_particles.tscn" id="3_egm0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqta8"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_egm0q"]
 
 [node name="Weed" type="Area2D"]
 collision_layer = 128
@@ -21,5 +23,9 @@ frame = 2
 frame_progress = 0.573807
 
 [node name="green_explosion" parent="." instance=ExtResource("3_egm0q")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamWAV_egm0q")
+volume_db = -11.4
 
 [editable path="weed_art"]
