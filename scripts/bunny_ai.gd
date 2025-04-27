@@ -14,7 +14,6 @@ var timer:float = 0
 var has_pointer: bool = false
 
 var has_been_seen = false
-var unkillable = false
 var flower
 signal died
 
@@ -45,6 +44,7 @@ func _ready():
 	target_postition = flower.global_position
 	offset = cursor_marker.position
 	pick_up_action = "right_click"
+	unkillable = false
 	
 func kill():
 	print("I DIE")

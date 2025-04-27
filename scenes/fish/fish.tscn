@@ -55,6 +55,7 @@ metadata/_edit_lock_ = true
 scale = Vector2(1.56, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 8.003
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

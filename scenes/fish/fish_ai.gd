@@ -8,9 +8,8 @@ var spawn_sound = preload("res://assets/audio/fish_jump.wav")
 
 func _ready(): 
 	super._ready()
-	$AudioStreamPlayer2D.stream = spawn_sound
-	$AudioStreamPlayer2D.play()
 	contact_monitor = true
+	unkillable = true
 	pick_up_action = "right_click"
 
 func _physics_process(delta: float) -> void:
@@ -49,10 +48,12 @@ func _physics_process(delta: float) -> void:
 			global_position = global_pos
 			global_rotation = global_rot
 			path_follow = null
-			
+			unkillable = false
 		
 func spawn(path: PathFollow2D):
 	path_follow = path
+	$AudioStreamPlayer2D.stream = spawn_sound
+	$AudioStreamPlayer2D.play()
 
 func _setheld(value:bool):
 	super._setheld(value)

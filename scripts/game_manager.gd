@@ -87,6 +87,7 @@ func _on_start_next_wave_timer_timeout() -> void:
 			root_timer.wait_time = wave4_root_amount
 			bunny_manager._set_spawn_rate(wave4_bunny_amount)
 			fisherman.start_fish_spawn_timer(wave4_fish_timer)
+			
 			flower_progress = GameState.WAVE_3
 			pass
 	flower_bed.set_growth_stage(flower_progress)

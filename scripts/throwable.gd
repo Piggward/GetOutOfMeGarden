@@ -12,6 +12,8 @@ var offset: Vector2 = Vector2.ZERO
 var drown_audio: AudioStreamPlayer2D = null
 signal die
 var pick_up_action = "left_click"
+var unkillable = false
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	drown_audio = AudioStreamPlayer2D.new()
@@ -48,7 +50,9 @@ func _setheld(value:bool):
 		global_position = global_position
 
 func drown():
+	if unkillable:
+		return
 	drown_audio.play()
-	visible = false
+	#visible = false
 	await drown_audio.finished
 	queue_free()
