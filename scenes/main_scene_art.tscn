@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=68 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
@@ -17,12 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://dxq2cnuc4d5rs" path="res://scenes/overgrowth_bar.tscn" id="16_h3kef"]
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="18_01anq"]
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
-[ext_resource type="Texture2D" uid="uid://bounp0ijqm03e" path="res://assets/ui/UI_all.png" id="19_ta3j7"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
 [ext_resource type="Script" uid="uid://i2q3r674j632" path="res://scripts/check_box.gd" id="20_eghg8"]
-[ext_resource type="Script" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
+[ext_resource type="Script" uid="uid://bssmjuglarusr" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
 [ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="20_ta3j7"]
-[ext_resource type="Texture2D" uid="uid://xj5mpyhlnoup" path="res://assets/ui/items.png" id="21_eghg8"]
+[ext_resource type="Texture2D" uid="uid://chqvvols4dxt3" path="res://assets/ui/inventory_chopped.png" id="21_4lhwe"]
 
 [sub_resource type="Animation" id="Animation_emd7q"]
 length = 0.001
@@ -308,12 +307,12 @@ atlas = ExtResource("18_01anq")
 region = Rect2(65.5548, 37.3099, 60.6124, 22.1226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txwpe"]
-atlas = ExtResource("19_ta3j7")
-region = Rect2(304, 0, 16, 16)
+atlas = ExtResource("21_4lhwe")
+region = Rect2(309, 230, 25, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syufy"]
-atlas = ExtResource("21_eghg8")
-region = Rect2(0, 0, 16, 18)
+atlas = ExtResource("21_4lhwe")
+region = Rect2(309, 256, 25, 26)
 
 [node name="Node2D2" type="Node2D"]
 
