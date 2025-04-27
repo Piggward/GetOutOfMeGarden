@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu2ytkj620cv2" path="res://scenes/tools/shovel.gd" id="1_jkevs"]
 [ext_resource type="Texture2D" uid="uid://cow62jjlkenkf" path="res://assets/farming_tools/all_tools/Showel.png" id="2_jkevs"]
-[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="3_y6jdd"]
+[ext_resource type="PackedScene" path="res://scenes/detect_interactable_area.tscn" id="3_y6jdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
 size = Vector2(20.7771, 20.7771)
@@ -37,6 +37,8 @@ collision_mask = 256
 position = Vector2(-4, 5)
 scale = Vector2(1.0719, 1.0719)
 shape = SubResource("RectangleShape2D_ubv7k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
