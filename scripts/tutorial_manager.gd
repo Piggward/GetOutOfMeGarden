@@ -25,7 +25,7 @@ var flowers: Array[Area2D] = []
 const WATERING_CAN = preload("res://scenes/tools/watering_can.tscn")
 @export var show_tutorial: bool = true
 @onready var vatten_kanna_marker = $"../Boundries/ToolArea/VattenKannaMarker"
-@onready var tutorial_music = $"../TutorialMusic"
+@onready var music = $"../Music"
 
 func _ready():
 	if not show_tutorial:
@@ -41,7 +41,8 @@ func _ready():
 		tool_area.add_child(watering_can)
 		tutorial_finished()
 		return
-	tutorial_music.play()
+	await get_tree().create_timer(1).timeout
+	music.get_stream_playback().switch_to_clip_by_name(&"Garden Main Loop")
 	watering_can = WATERING_CAN.instantiate()
 	watering_can.global_position = vatten_kanna_marker.global_position
 	tool_area.add_child(watering_can)
@@ -60,7 +61,6 @@ func tutorial_finished():
 	Global.game_start.emit()
 	tool_tip.visible = false
 	pointer.queue_free()
-	tutorial_music.stop()
 	animation_player.play_backwards("tutorial")
 	
 func _on_first_interact(area: InteractableArea):
@@ -132,7 +132,6 @@ func _on_first_interact(area: InteractableArea):
 		next_rect.get_child(0).text = "Begin!"
 		await next_rect.next_pressed
 		Global.tutorial = false
-		tutorial_music.stop()
 		Global.game_start.emit()
 		tool_tip.visible = false
 		pointer.queue_free()

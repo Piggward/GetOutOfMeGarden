@@ -43,6 +43,9 @@ var current_state: GameState = GameState.START
 const SpawnManagerScene = preload("res://scenes/spawnable_area.tscn")
 
 func start_game():
+	main_audio.stream = main_bg_music[0]
+	main_audio.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_DISABLED
+	main_audio.start_fade_in()
 	_on_start_next_wave_timer_timeout()
 
 func _ready() -> void:
@@ -67,9 +70,6 @@ func _on_start_next_wave_timer_timeout() -> void:
 	# TODO: tell SpawnManager what state we are in/update spawnables objects (and/or their spawnrate)
 	match current_state:
 		GameState.WAVE_1:
-			main_audio.stream = main_bg_music[0]
-			main_audio.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_DISABLED
-			main_audio.play()
 			weed_timer = spawn_manager.start_spawning_object("weed", wave1_weed_amount)
 		GameState.WAVE_2:
 			weed_timer.wait_time = wave2_weed_amount
