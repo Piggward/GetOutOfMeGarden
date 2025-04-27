@@ -44,6 +44,7 @@ func _ready():
 	flower = flower_bed.get_random_alive_flower()
 	target_postition = flower.global_position
 	offset = cursor_marker.position
+	pick_up_action = "right_click"
 	
 func kill():
 	print("I DIE")

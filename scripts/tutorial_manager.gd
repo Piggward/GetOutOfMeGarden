@@ -103,7 +103,7 @@ func _on_first_interact(area: InteractableArea):
 		pointer.global_position = bunny.global_position
 		pointer.reparent(bunny)
 		pointer.visible = true
-		tool_label.text = "That rabbit is after your flowers which is also your LIFE! Pick it up with right click!"
+		tool_label.text = "That rabbit is after your flowers which is also your LIFE! Pick it up with left click!"
 		next_rect.visible = false
 	elif area is Flower and interacted.has("waiting_second_flower"):
 		if flowers.any(func(a): return a.has_pointer):

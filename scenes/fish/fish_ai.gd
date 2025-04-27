@@ -11,6 +11,7 @@ func _ready():
 	$AudioStreamPlayer2D.stream = spawn_sound
 	$AudioStreamPlayer2D.play()
 	contact_monitor = true
+	pick_up_action = "right_click"
 
 func _physics_process(delta: float) -> void:
 	super(delta)

@@ -11,19 +11,19 @@ var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
 var drown_audio: AudioStreamPlayer2D = null
 signal die
-
+var pick_up_action = "left_click"
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	drown_audio = AudioStreamPlayer2D.new()
 	drown_audio.stream = preload("res://assets/audio/fish_back_in_water.wav")
 	add_child(drown_audio)
 func _input(event):
-	if event.is_action_pressed("left_click") and player.can_pick_up() and mouse_enter:
+	if event.is_action_pressed(pick_up_action) and player.can_pick_up() and mouse_enter:
 		_setheld(true)
 		linear_velocity = Vector2.ZERO
 		angular_velocity = 0
 		linear_damp = 0
-	elif event.is_action_released("left_click") and is_held:
+	elif event.is_action_released(pick_up_action) and is_held:
 		freeze_mode = FreezeMode.FREEZE_MODE_KINEMATIC
 		_setheld(false)
 		freeze = false
