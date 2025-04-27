@@ -10,6 +10,8 @@ var player: Player
 var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
 
+signal die
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
@@ -41,3 +43,4 @@ func _setheld(value:bool):
 		player.pick_up(self)
 	else:
 		player.release()
+		global_position = global_position

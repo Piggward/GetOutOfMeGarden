@@ -95,6 +95,7 @@ func _on_first_interact(area: InteractableArea):
 		await next_rect.next_pressed
 		var bunny = BUNNY.instantiate()
 		bunny.global_position = first_bunny_marker.global_position
+		bunny.has_pointer = true
 		get_tree().root.add_child(bunny)
 		pointer.global_position = bunny.global_position
 		pointer.reparent(bunny)
@@ -119,6 +120,8 @@ func _on_first_interact(area: InteractableArea):
 		var stump = ROOT.instantiate()
 		stump.global_position = first_stump_marker.global_position
 		get_tree().root.add_child(stump)
+		await stump.dug
+		tool_label.text = "And yeet that stump outta here!"
 		await stump.die
 		tool_label.text = "Great, you are now on your own, good luck!"
 		pointer.visible = false
@@ -147,7 +150,7 @@ func _on_first_pick_up(object: ThrowableBody):
 		pointer.throw()
 		pointer.global_position = bunny_throw_marker.global_position
 		tool_label.text = "Throw that bunny out of here!"
-		await get_tree().create_timer(3).timeout
+		await object.die
 		tool_label.text = "Good riddance! No matter how cute it is, dont let it get to your flowers!"
 		next_rect.visible = true
 		await next_rect.next_pressed

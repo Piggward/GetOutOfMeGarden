@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnuifp7o6dxkl"]
+
+[ext_resource type="Script" uid="uid://1jnei1nsc4lr" path="res://scripts/stump.gd" id="1_qs86r"]
+[ext_resource type="PackedScene" uid="uid://bps4w12gwc1pw" path="res://scenes/stump_scene.tscn" id="2_7qlwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6exu"]
+
+[node name="Stump" type="RigidBody2D"]
+collision_layer = 256
+collision_mask = 0
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_qs86r")
+max_velocity = 1500.0
+metadata/_custom_type_script = "uid://bf5nnpvtn7cyi"
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_7qlwd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s6exu")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
