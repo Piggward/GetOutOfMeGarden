@@ -13,8 +13,28 @@ var timer:float = 0
 @onready var cursor_marker = $CursorMarker
 var has_pointer: bool = false
 
+var has_been_seen = false
+var unkillable = false
 var flower
+signal died
 
+var yeat_sounds = [
+	preload("res://assets/audio/bunny_yeat.wav"),
+	preload("res://assets/audio/bunny_yeat_2.wav"),
+	preload("res://assets/audio/bunny_yeat_3.wav"),
+	preload("res://assets/audio/bunny_yeat_4.wav"),
+]
+
+var bunny_jump_sounds = [
+	preload("res://assets/audio/bunny_jump.wav"),
+	preload("res://assets/audio/bunny_jump2.wav"),
+	preload("res://assets/audio/bunny_jump3.wav"),
+]
+var bunny_eat_sounds = [
+	preload("res://assets/audio/bunny_eat.wav"),
+	preload("res://assets/audio/bunny_eat2.wav"),
+	preload("res://assets/audio/bunny_eat3.wav"),
+]
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready(): 
@@ -43,6 +63,10 @@ func jump():
 	else:
 		jump_position = global_position+direction * jump_distance
 	animated_sprite_2d.play("jump")
+	if $AudioListener2D.stream not in bunny_jump_sounds:
+		$AudioListener2D.stream = bunny_jump_sounds.pick_random()
+		$AudioListener2D.pitch_scale = randf_range(1.0, 1.1)
+		$AudioListener2D.play()
 	
 func _process(delta: float) -> void:
 	if(is_held):
@@ -61,6 +85,10 @@ func _process(delta: float) -> void:
 	
 	if(global_position.distance_to(target_postition)<kill_flower_distance):
 		flower._kill()
+		if $AudioListener2D.stream not in bunny_eat_sounds:
+			$AudioListener2D.stream = bunny_eat_sounds.pick_random()
+			$AudioListener2D.pitch_scale = randf_range(1.0, 1.5)
+			$AudioListener2D.play()
 
 func _setheld(value:bool):
 	super._setheld(value)
@@ -68,6 +96,11 @@ func _setheld(value:bool):
 		animated_sprite_2d.play("struggle")
 	if(!value):
 		animated_sprite_2d.play("idle")
+		if not $AudioListener2D.playing:
+			$AudioListener2D.stream = yeat_sounds.pick_random()
+			$AudioListener2D.pitch_scale = randf_range(1.0, 1.5)
+			$AudioListener2D.play()
+		global_position = global_position
 	
 func _on_mouse_entered() -> void:
 	mouse_enter = true
@@ -76,3 +109,15 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_enter = false
 	pass # Replace with function body.
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	died.emit()
+	if unkillable:
+		return
+	if has_been_seen:
+		print("bunny dead")
+		queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	has_been_seen = true

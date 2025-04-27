@@ -46,9 +46,13 @@ func interact(tool_used: String = ""):
 		current_water_liters += watering_speed
 
 func set_growth_stage(id: int):
+	if start_sprite_id + progress.DEAD == cur_sprite_id:
+		print("flower is already dead")
+		return
+
 	cur_sprite_id = start_sprite_id + id
 	sprite_sheet.frame = cur_sprite_id
-	current_water_liters = max_water_liters
+	#current_water_liters = max_water_liters
 	growth_timer.paused = false
 	
 func set_to_low():
@@ -77,6 +81,8 @@ func _on_interaction_timer_timeout() -> void:
 	can_interact = true
 
 func _kill():
+	# Killed?
+	print("flower dead")
 	is_dead = true
 	set_growth_stage(progress.DEAD)
 	growth_timer.paused = true

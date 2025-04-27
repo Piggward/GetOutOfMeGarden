@@ -55,10 +55,12 @@ func _ready():
 	animation_player.play("tutorial")
 	
 func tutorial_finished():
+	print("done with tutorial?=?????")
 	Global.tutorial = false
 	Global.game_start.emit()
 	tool_tip.visible = false
 	pointer.queue_free()
+	tutorial_music.stop()
 	animation_player.play_backwards("tutorial")
 	
 func _on_first_interact(area: InteractableArea):
@@ -94,6 +96,7 @@ func _on_first_interact(area: InteractableArea):
 		next_rect.visible = true
 		await next_rect.next_pressed
 		var bunny = BUNNY.instantiate()
+		bunny.unkillable = true
 		bunny.global_position = first_bunny_marker.global_position
 		bunny.has_pointer = true
 		get_tree().root.add_child(bunny)
@@ -129,6 +132,7 @@ func _on_first_interact(area: InteractableArea):
 		next_rect.get_child(0).text = "Begin!"
 		await next_rect.next_pressed
 		Global.tutorial = false
+		tutorial_music.stop()
 		Global.game_start.emit()
 		tool_tip.visible = false
 		pointer.queue_free()

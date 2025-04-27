@@ -25,6 +25,7 @@ enum GameState {
 
 @onready var bunny_manager: Node2D = $"../BunnyManager"
 @onready var fisherman: Node2D = $"../Fisherman"
+@onready var flower_bed: FlowerBed = $"../FlowerBed"
 
 var main_bg_music: Array[AudioStreamWAV] = [
 	preload("res://assets/audio/main_loop_1.wav"),
@@ -84,7 +85,7 @@ func _on_start_next_wave_timer_timeout() -> void:
 			bunny_manager._set_spawn_rate(wave4_bunny_amount)
 			# TODO
 			pass
-	
+	flower_bed.set_growth_stage(current_state)
 	wave_timer.start()	
 
 func _on_wave_timer_timeout() -> void:
