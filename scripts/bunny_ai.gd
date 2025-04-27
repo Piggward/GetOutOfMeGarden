@@ -11,6 +11,7 @@ var flower_bed:FlowerBed
 var isJumping:bool = false
 var timer:float = 0
 @onready var cursor_marker = $CursorMarker
+var has_pointer: bool = false
 
 var flower
 
@@ -23,6 +24,16 @@ func _ready():
 	flower = flower_bed.get_random_alive_flower()
 	target_postition = flower.global_position
 	offset = cursor_marker.position
+	
+func kill():
+	print("I DIE")
+	die.emit()
+	if has_pointer:
+		for child in get_children():
+			if child.name == "Pointer":
+				child.reparent(get_parent())
+	self.queue_free()
+	
 	
 func jump():
 	isJumping = true
