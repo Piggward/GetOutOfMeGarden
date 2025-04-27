@@ -32,6 +32,7 @@ func interact(tool_used: String = ""):
 				child.queue_free()
 				has_pointer = false
 				water_level.value = water_level.max_value
+				print("ahuhw")
 	if not can_interact:
 		return
 	

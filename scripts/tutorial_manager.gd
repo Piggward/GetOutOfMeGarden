@@ -25,6 +25,7 @@ var flowers: Array[Area2D] = []
 const WATERING_CAN = preload("res://scenes/tools/watering_can.tscn")
 @export var show_tutorial: bool = true
 @onready var vatten_kanna_marker = $"../Boundries/ToolArea/VattenKannaMarker"
+@onready var tutorial_music = $"../TutorialMusic"
 
 func _ready():
 	if not show_tutorial:
@@ -40,6 +41,7 @@ func _ready():
 		tool_area.add_child(watering_can)
 		tutorial_finished()
 		return
+	tutorial_music.play()
 	watering_can = WATERING_CAN.instantiate()
 	watering_can.global_position = vatten_kanna_marker.global_position
 	tool_area.add_child(watering_can)
