@@ -5,7 +5,7 @@ extends ThrowableBody
 func _ready():
 	super._ready()
 	throw_randomly()
-	pick_up_action = "right_click"
+	extra_pick_up_action = "right_click"
 
 func throw_randomly():
 	var speed = 300  # How fast you want to throw it

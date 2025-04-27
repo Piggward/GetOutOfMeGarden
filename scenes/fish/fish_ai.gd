@@ -10,7 +10,7 @@ func _ready():
 	super._ready()
 	contact_monitor = true
 	unkillable = true
-	pick_up_action = "right_click"
+	extra_pick_up_action = "right_click"
 
 func _physics_process(delta: float) -> void:
 	super(delta)
