@@ -24,7 +24,7 @@ func _ready():
 			child.area_left.connect(_on_area_left)
 	if not audio:
 		audio = AudioStreamPlayer2D.new()
-		audio.volume_db = -11.0
+		audio.volume_db = 5.0
 		add_child(audio)
 
 func _on_area_detected(area: InteractableArea):
