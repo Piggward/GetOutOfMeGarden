@@ -11,7 +11,7 @@ var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
 var drown_audio: AudioStreamPlayer2D = null
 signal die
-var extra_pick_up_action = ""
+var extra_pick_up_action = "left_click"
 var unkillable = false
 
 func _ready():
