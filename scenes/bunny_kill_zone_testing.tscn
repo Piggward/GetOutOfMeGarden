@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="1_ggekc"]
 [ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="2_jlnme"]
 [ext_resource type="PackedScene" uid="uid://cin1gto4v8a5m" path="res://scenes/bunny_kill_zone.tscn" id="3_jlnme"]
-[ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="3_jxqmv"]
+[ext_resource type="PackedScene" uid="uid://chlpdbkakf0a6" path="res://scenes/bunny_manager.tscn" id="3_jxqmv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="4_awsuq"]
 
 [node name="Node2D" type="Node2D"]
