@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=69 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
@@ -19,8 +19,10 @@
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
 [ext_resource type="Texture2D" uid="uid://bounp0ijqm03e" path="res://assets/ui/UI_all.png" id="19_ta3j7"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
-[ext_resource type="Script" uid="uid://bssmjuglarusr" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
+[ext_resource type="Script" uid="uid://i2q3r674j632" path="res://scripts/check_box.gd" id="20_eghg8"]
+[ext_resource type="Script" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
 [ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="20_ta3j7"]
+[ext_resource type="Texture2D" uid="uid://xj5mpyhlnoup" path="res://assets/ui/items.png" id="21_eghg8"]
 
 [sub_resource type="Animation" id="Animation_emd7q"]
 length = 0.001
@@ -305,9 +307,13 @@ region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 atlas = ExtResource("18_01anq")
 region = Rect2(65.5548, 37.3099, 60.6124, 22.1226)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_om63h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_txwpe"]
 atlas = ExtResource("19_ta3j7")
 region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syufy"]
+atlas = ExtResource("21_eghg8")
+region = Rect2(0, 0, 16, 18)
 
 [node name="Node2D2" type="Node2D"]
 
@@ -533,6 +539,7 @@ offset_bottom = 673.0
 visible = false
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.01
@@ -652,7 +659,11 @@ vertical_alignment = 1
 
 [node name="CheckBox" type="Button" parent="CanvasLayer/MainMenu/SkipTutorialContainer"]
 layout_mode = 2
+focus_mode = 0
 flat = true
+script = ExtResource("20_eghg8")
+unchecked_texture = SubResource("AtlasTexture_txwpe")
+checked_texture = SubResource("AtlasTexture_syufy")
 
 [node name="Texture" type="TextureRect" parent="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox"]
 texture_filter = 1
@@ -668,7 +679,6 @@ offset_right = 14.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_om63h")
 script = ExtResource("20_emd7q")
 
 [node name="Label2" type="Label" parent="CanvasLayer/MainMenu/SkipTutorialContainer"]
@@ -687,6 +697,7 @@ position = Vector2(596, 159)
 [connection signal="mouse_entered" from="CanvasLayer/MainMenu/PlayButton/TextureRect" to="CanvasLayer/MainMenu/PlayButton/TextureRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/MainMenu/PlayButton/TextureRect" to="CanvasLayer/MainMenu/PlayButton/TextureRect" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox" to="GameManager" method="_toggle_skip_tutorial"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox" method="_toggle"]
 [connection signal="gui_input" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_gui_input"]
 [connection signal="mouse_entered" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_mouse_exited"]

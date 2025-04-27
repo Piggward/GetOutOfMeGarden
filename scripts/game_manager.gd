@@ -5,17 +5,17 @@ extends Node
 @onready var skip_tutorial_button = $"../CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox"
 
 #spawn rates
-var weed_timer:Timer
-var root_timer:Timer
-@export var wave1_weed_amount:float
-@export var wave2_weed_amount:float
-@export var wave3_weed_amount:float
-@export var wave4_weed_amount:float
-@export var wave2_root_amount:float
-@export var wave3_root_amount:float
-@export var wave4_root_amount:float
-@export var wave3_bunny_amount:float
-@export var wave4_bunny_amount:float
+var weed_timer: Timer
+var root_timer: Timer
+@export var wave1_weed_amount: float
+@export var wave2_weed_amount: float
+@export var wave3_weed_amount: float
+@export var wave4_weed_amount: float
+@export var wave2_root_amount: float
+@export var wave3_root_amount: float
+@export var wave4_root_amount: float
+@export var wave3_bunny_amount: float
+@export var wave4_bunny_amount: float
 
 var skip_tutorial: bool = false # FIXME: ugh ger upp, försökt lära mig nåt men svär har bara blivit dummare
 
@@ -83,10 +83,10 @@ func _on_start_next_wave_timer_timeout() -> void:
 		GameState.WAVE_3:
 			bunny_manager._set_spawn_rate(wave3_bunny_amount)
 			bunny_manager.set_spawn(true)
-			weed_timer.wait_time=wave3_weed_amount
+			weed_timer.wait_time = wave3_weed_amount
 			root_timer.wait_time = wave3_root_amount
 		GameState.WAVE_4:
-			weed_timer.wait_time=wave4_weed_amount
+			weed_timer.wait_time = wave4_weed_amount
 			root_timer.wait_time = wave4_root_amount
 			bunny_manager._set_spawn_rate(wave4_bunny_amount)
 			# TODO
@@ -101,7 +101,7 @@ func _on_wave_timer_timeout() -> void:
 	# Just wait 5s for now
 	var start_next_wave_timer = Timer.new()
 	add_child(start_next_wave_timer)
-	if(current_state == GameState.WAVE_3):
+	if (current_state == GameState.WAVE_3):
 		start_next_wave_timer.wait_time = 45.0 # Wait 5.0s for now
 	else:
 		start_next_wave_timer.wait_time = 12.0 # Wait 5.0s for now
@@ -124,8 +124,6 @@ func _on_play_button_pressed() -> void:
 	
 func _toggle_skip_tutorial() -> void:
 	skip_tutorial = not skip_tutorial
-	print("_toggle_skip_tutorial")
-
 
 func _on_audio_stream_player_finished() -> void:
 	var next_song = main_bg_music[(current_state) - 1]
