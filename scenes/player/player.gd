@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 var holding: ThrowableBody = null
-@onready var cursor = $AnimatedSprite2D
+#@onready var cursor = $AnimatedSprite2D
 const HAND_ICONS_1 = preload("res://scenes/player/HandIcons1.png")
 const HAND_ICONS_2 = preload("res://scenes/player/HandIcons2.png")
 const HAND_CLOSED = preload("res://scenes/player/hand_closed.png")

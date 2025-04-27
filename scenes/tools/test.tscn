@@ -19,9 +19,6 @@ occluder_light_mask = 256
 [node name="WateringCan" parent="." instance=ExtResource("1_kx1v6")]
 position = Vector2(8, -10)
 
-[node name="GPUParticles2D" parent="WateringCan/WaterMarker" index="0"]
-emitting = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
