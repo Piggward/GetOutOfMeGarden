@@ -32,9 +32,9 @@ func _on_start_next_wave_timer_timeout() -> void:
 	# TODO: tell SpawnManager what state we are in/update spawnables objects (and/or their spawnrate)
 	match current_state:
 		GameState.WAVE_1:
-			spawn_manager.start_spawning_object("weed", .1)
+			spawn_manager.start_spawning_object("weed", 1)
 		GameState.WAVE_2:
-			spawn_manager.start_spawning_object("root", .1)
+			spawn_manager.start_spawning_object("root", 3)
 		GameState.WAVE_3:
 			# TODO
 			pass
