@@ -268,6 +268,7 @@ script = ExtResource("1_c30i1")
 spawn_paths = [NodePath("Path2D"), NodePath("Path2D2"), NodePath("Path2D3"), NodePath("Path2D4"), NodePath("Path2D5"), NodePath("Path2D6"), NodePath("Path2D7"), NodePath("Path2D7"), NodePath("Path2D8")]
 
 [node name="FishAnim" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0gf35")
 autoplay = "default"
 metadata/_edit_lock_ = true
