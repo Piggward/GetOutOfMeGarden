@@ -1,7 +1,7 @@
 extends InteractableArea
 class_name  Flower
-var max_water_liters = 40.0     # Maximum water at time
-var current_water_liters = 40.0  # Current watering progress
+var max_water_liters = 50.0     # Maximum water at time
+var current_water_liters = 50.0  # Current watering progress
 
 var can_interact = true
 var start_sprite_id = null

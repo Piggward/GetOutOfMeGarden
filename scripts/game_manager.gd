@@ -42,7 +42,7 @@ enum GameState {
 	WAVE_7
 }
 
-var wave_length = [	13,	13,	13, 13, 13, 45,	45,	45]
+var wave_length = [	13,	13,	13, 13, 13, 30,	30,	30]
 
 @onready var bunny_manager: Node2D = $"../BunnyManager"
 @onready var fisherman: Node2D = $"../Fisherman"
@@ -87,8 +87,9 @@ func next_wave() -> GameState:
 	
 func _on_start_next_wave_timer_timeout() -> void:
 	if current_state == GameState.WAVE_7:
-		flower_bed.set_growth_stage(GameState.WAVE_4)
+		flower_bed.set_growth_stage(4)
 		Global.game_over.emit(true)
+		return
 	var next_state = next_wave()
 	print("[GameManager#_on_start_next_wave_timer_timeout] Update state from: [%s], to: [%s]" % [current_state, next_state])
 	current_state = next_state
