@@ -1,5 +1,6 @@
 [gd_scene load_steps=63 format=4 uid="uid://wp0cro7q2wqd"]
 
+
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
 [ext_resource type="TileSet" uid="uid://cnkxuq3kbieh" path="res://tile_set/ground_tile_set.tres" id="1_o8dd4"]
@@ -304,7 +305,6 @@ region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 
 [node name="TutorialManager" type="Node" parent="."]
 script = ExtResource("1_h3kef")
-show_tutorial = false
 
 [node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
 position = Vector2(430, 185)
@@ -469,7 +469,7 @@ position = Vector2(343.5, 156)
 shape = SubResource("RectangleShape2D_1r8fp")
 
 [node name="VattenKannaMarker" type="Marker2D" parent="Boundries/ToolArea"]
-position = Vector2(160, 233)
+position = Vector2(193, 218)
 
 [node name="ShovelMarker" type="Marker2D" parent="Boundries/ToolArea"]
 position = Vector2(325, 223)
@@ -499,9 +499,6 @@ spawn_area_height = 200.0
 
 [node name="Player" parent="." instance=ExtResource("8_smrwv")]
 
-[node name="WateringCan" parent="." instance=ExtResource("6_qceur")]
-position = Vector2(221, 211)
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ul6ws")
 
@@ -519,6 +516,7 @@ offset_bottom = 673.0
 [node name="TextureRect" parent="CanvasLayer" instance=ExtResource("19_wau27")]
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.01
@@ -567,5 +565,4 @@ position = Vector2(596, 159)
 [connection signal="mouse_exited" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_exited"]
 
 [editable path="SpawnableArea"]
-[editable path="WateringCan"]
 [editable path="CanvasLayer/ToolTip"]
