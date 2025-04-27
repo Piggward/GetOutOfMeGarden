@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bq0wi8nw060no" path="res://assets/particles/star_06.png" id="4_wau27"]
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
 [ext_resource type="Texture2D" uid="uid://dti8xo1td4twl" path="res://assets/animals/sheep_baby animation.png" id="5_wau27"]
-[ext_resource type="PackedScene" uid="uid://chlpdbkakf0a6" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
+[ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
 [ext_resource type="Script" uid="uid://d3wkbtn4suwqm" path="res://scripts/canvas_layer.gd" id="16_01anq"]
@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="18_01anq"]
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
-[ext_resource type="Script" path="res://scripts/check_box.gd" id="20_eghg8"]
-[ext_resource type="Script" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
+[ext_resource type="Script" uid="uid://i2q3r674j632" path="res://scripts/check_box.gd" id="20_eghg8"]
+[ext_resource type="Script" uid="uid://bssmjuglarusr" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
 [ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="20_ta3j7"]
 [ext_resource type="Texture2D" uid="uid://chqvvols4dxt3" path="res://assets/ui/inventory_chopped.png" id="21_4lhwe"]
 
@@ -641,6 +641,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SkipTutorialContainer" type="HBoxContainer" parent="CanvasLayer/MainMenu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 20
