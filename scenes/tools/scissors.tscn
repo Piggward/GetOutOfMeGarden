@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btrevxwhwbtfs" path="res://assets/farming_tools/GardenSheers.png" id="1_136eo"]
 [ext_resource type="Script" uid="uid://phrmcrewi78b" path="res://scenes/tools/scissors.gd" id="1_i6u0j"]
 [ext_resource type="AudioStream" uid="uid://v4hslg25ptsc" path="res://assets/audio/scissor_air.wav" id="4_p7jo4"]
-[ext_resource type="PackedScene" path="res://scenes/detect_interactable_area.tscn" id="4_ubv7k"]
+[ext_resource type="PackedScene" uid="uid://dvg2oogt28upn" path="res://scenes/detect_interactable_area.tscn" id="4_ubv7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcea"]
 

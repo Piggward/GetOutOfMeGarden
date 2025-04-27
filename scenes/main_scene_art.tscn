@@ -361,16 +361,28 @@ libraries = {
 }
 
 [node name="GameManager" parent="." instance=ExtResource("1_1fh0c")]
-wave1_weed_amount = 1.5
-wave2_weed_amount = 1.5
-wave3_weed_amount = 1.5
-wave4_weed_amount = 1.5
-wave2_root_amount = 5.0
-wave3_root_amount = 4.5
-wave4_root_amount = 4.5
-wave3_bunny_amount = 8.0
-wave4_bunny_amount = 4.0
-wave4_fish_timer = 15.0
+wave1_weed_amount = 3.0
+wave2_weed_amount = 2.0
+wave3_weed_amount = 2.0
+wave4_weed_amount = 1.0
+wave5_weed_amount = 1.5
+wave6_weed_amount = 1.0
+wave7_weed_amount = 1.0
+wave2_root_amount = 6.0
+wave3_root_amount = 6.0
+wave4_root_amount = 5.5
+wave5_root_amount = 5.0
+wave6_root_amount = 4.5
+wave7_root_amount = 4.0
+wave3_bunny_amount = 12.0
+wave4_bunny_amount = 12.0
+wave5_bunny_amount = 12.0
+wave6_bunny_amount = 12.0
+wave7_bunny_amount = 12.0
+wave4_fish_timer = 13.0
+wave5_fish_timer = 13.0
+wave6_fish_timer = 22.0
+wave7_fish_timer = 17.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
