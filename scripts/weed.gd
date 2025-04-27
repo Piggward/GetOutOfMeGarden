@@ -3,6 +3,7 @@ extends InteractableArea
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $weed_art/AnimatedSprite2D
 const GREEN_EXPLOSION_PARTICLES = preload("res://scenes/green_explosion_particles.tscn")
+@export var on_hit_kill:bool
 
 var spawn_sounds = [
 	preload("res://assets/audio/grass_spawn.wav"),
@@ -34,7 +35,7 @@ func damage():
 	get_tree().root.add_child(expl)
 	expl.global_position = self.global_position
 	expl.emitting = true
-	if animated_sprite_2d.frame == 0:
+	if animated_sprite_2d.frame == 0 or on_hit_kill:
 		self.kill()
 	else:
 		animated_sprite_2d.frame -= 1

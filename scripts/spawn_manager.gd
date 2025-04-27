@@ -32,7 +32,7 @@ func _game_start():
 
 	
 # spawn_rate in s
-func start_spawning_object(object_name: String, spawn_rate: float) -> void:
+func start_spawning_object(object_name: String, spawn_rate: float) -> Timer:
 	#if spawn_rate <= 0:
 	#	return
 	var timer = Timer.new()
@@ -46,6 +46,7 @@ func start_spawning_object(object_name: String, spawn_rate: float) -> void:
 	timer.timeout.connect(_on_spawn_timer_timeout.bind(spawn_object, [object_name]))
 
 	timer.start()
+	return timer
 
 # Called every time any timer fires
 func _on_spawn_timer_timeout(func_to_call: Callable, args: Array):
