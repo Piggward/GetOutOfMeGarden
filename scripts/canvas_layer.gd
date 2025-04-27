@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var play_button: Button = $PlayButton
+@onready var play_button = $MainMenu
 
 func _ready():
 	Global.game_start.connect(_start)

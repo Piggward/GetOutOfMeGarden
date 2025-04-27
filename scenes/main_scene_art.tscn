@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=66 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
@@ -13,13 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
-[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="16_01anq"]
+[ext_resource type="Script" uid="uid://d3wkbtn4suwqm" path="res://scripts/canvas_layer.gd" id="16_01anq"]
 [ext_resource type="PackedScene" uid="uid://dxq2cnuc4d5rs" path="res://scenes/overgrowth_bar.tscn" id="16_h3kef"]
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="18_01anq"]
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
+[ext_resource type="Texture2D" uid="uid://bounp0ijqm03e" path="res://assets/ui/UI_all.png" id="19_ta3j7"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
 [ext_resource type="Script" uid="uid://bssmjuglarusr" path="res://scenes/next_texture_btn.gd" id="20_emd7q"]
-[ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="20_emd7q"]
+[ext_resource type="PackedScene" uid="uid://c4tlk3cb5tojl" path="res://scenes/fish/fisherman.tscn" id="20_ta3j7"]
 
 [sub_resource type="Animation" id="Animation_emd7q"]
 length = 0.001
@@ -304,6 +305,10 @@ region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 atlas = ExtResource("18_01anq")
 region = Rect2(65.5548, 37.3099, 60.6124, 22.1226)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_om63h"]
+atlas = ExtResource("19_ta3j7")
+region = Rect2(304, 0, 16, 16)
+
 [node name="Node2D2" type="Node2D"]
 
 [node name="TutorialManager" type="Node" parent="."]
@@ -515,7 +520,6 @@ spawn_area_height = 200.0
 occluder = SubResource("OccluderPolygon2D_ul6ws")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("16_01anq")
 
 [node name="OvergrowthBar" parent="CanvasLayer" instance=ExtResource("16_h3kef")]
@@ -529,7 +533,6 @@ offset_bottom = 673.0
 visible = false
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
-visible = false
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.01
@@ -542,7 +545,6 @@ offset_bottom = 164.0
 grow_horizontal = 2
 
 [node name="NextRect" type="TextureRect" parent="CanvasLayer/ToolTip"]
-visible = false
 layout_mode = 0
 offset_left = 420.0
 offset_top = 184.0
@@ -568,35 +570,49 @@ text = "NEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer"]
+[node name="MainMenu" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -40.0
+offset_top = -150.0
 offset_right = 150.0
-offset_bottom = 40.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 40
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayButton"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu/PlayButton"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -36.0
+offset_right = 146.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_01anq")
 script = ExtResource("20_emd7q")
 
-[node name="Label" type="Label" parent="CanvasLayer/PlayButton/TextureRect"]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/PlayButton/TextureRect"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -618,15 +634,62 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="SkipTutorialContainer" type="HBoxContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/SkipTutorialContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Skip tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="Button" parent="CanvasLayer/MainMenu/SkipTutorialContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Texture" type="TextureRect" parent="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_om63h")
+script = ExtResource("20_emd7q")
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainMenu/SkipTutorialContainer"]
+layout_mode = 2
+
+[node name="Fisherman" parent="." instance=ExtResource("20_ta3j7")]
+position = Vector2(596, 159)
+
 [connection signal="area_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_area_exited"]
 [connection signal="body_exited" from="Boundries/ToolArea" to="Boundries/ToolArea" method="_on_body_exited"]
 [connection signal="flowers_died" from="FlowerBed" to="GameManager" method="_on_flower_bed_flowers_died"]
 [connection signal="gui_input" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_gui_input"]
 [connection signal="mouse_entered" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_exited"]
-[connection signal="gui_input" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_gui_input"]
-[connection signal="mouse_entered" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/PlayButton/TextureRect" to="CanvasLayer/PlayButton/TextureRect" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/MainMenu/PlayButton/TextureRect" to="CanvasLayer/MainMenu/PlayButton/TextureRect" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/MainMenu/PlayButton/TextureRect" to="CanvasLayer/MainMenu/PlayButton/TextureRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MainMenu/PlayButton/TextureRect" to="CanvasLayer/MainMenu/PlayButton/TextureRect" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox" to="GameManager" method="_toggle_skip_tutorial"]
+[connection signal="gui_input" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" to="CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox/Texture" method="_on_mouse_exited"]
 
 [editable path="GameManager"]
 [editable path="SpawnableArea"]

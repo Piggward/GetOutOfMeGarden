@@ -1,7 +1,9 @@
 extends Node
 
 @onready var wave_timer: Timer = $WaveTimer
-@onready var play_button = $"../CanvasLayer/PlayButton" # Since PlayButton is a sibling to GameManager
+@onready var play_button = $"../CanvasLayer/MainMenu/PlayButton" # Since PlayButton is a sibling to GameManager
+@onready var skip_tutorial_button = $"../CanvasLayer/MainMenu/SkipTutorialContainer/CheckBox"
+
 #spawn rates
 var weed_timer:Timer
 var root_timer:Timer
@@ -14,6 +16,8 @@ var root_timer:Timer
 @export var wave4_root_amount:float
 @export var wave3_bunny_amount:float
 @export var wave4_bunny_amount:float
+
+var skip_tutorial: bool = false # FIXME: ugh ger upp, försökt lära mig nåt men svär har bara blivit dummare
 
 
 enum GameState {
@@ -113,7 +117,14 @@ func _on_flower_bed_flowers_died() -> void:
 func _on_play_button_pressed() -> void:
 	if current_state != GameState.START:
 		print("[GameManager#_on_play_button_pressed] Unkown current_state: [%s], going back to GameState.START" % str(current_state))
-	Global.tutorial_start.emit()
+	if skip_tutorial:
+		Global.game_start.emit()
+	else:
+		Global.tutorial_start.emit()
+	
+func _toggle_skip_tutorial() -> void:
+	skip_tutorial = not skip_tutorial
+	print("_toggle_skip_tutorial")
 
 
 func _on_audio_stream_player_finished() -> void:
