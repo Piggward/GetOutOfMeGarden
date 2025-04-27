@@ -26,8 +26,10 @@ func _ready():
 	pass
 	
 func _game_start():
-	start_spawning_object("root", 5)
-	start_spawning_object("weed", 1)
+	pass
+	#start_spawning_object("root", .1)
+	#start_spawning_object("weed", .1)
+
 	
 # spawn_rate in s
 func start_spawning_object(object_name: String, spawn_rate: float) -> void:

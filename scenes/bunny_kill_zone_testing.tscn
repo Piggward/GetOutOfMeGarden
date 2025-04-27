@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3f6x0tl0n7rs"]
+
+[ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="1_ggekc"]
+[ext_resource type="PackedScene" uid="uid://5y0mhwbcuqgf" path="res://scenes/bunny.tscn" id="2_jlnme"]
+[ext_resource type="PackedScene" uid="uid://cin1gto4v8a5m" path="res://scenes/bunny_kill_zone.tscn" id="3_jlnme"]
+[ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="3_jxqmv"]
+[ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="4_awsuq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FlowerBed" parent="." instance=ExtResource("1_ggekc")]
+position = Vector2(37, 248)
+
+[node name="Bunny" parent="." instance=ExtResource("2_jlnme")]
+position = Vector2(96, 70)
+kill_flower_distance = 1.0
+
+[node name="BunnyManager" parent="." instance=ExtResource("3_jxqmv")]
+position = Vector2(104, 49)
+spawn_area_width = 10.0
+spawn_area_height = 10.0
+
+[node name="Node2D" parent="." instance=ExtResource("3_jlnme")]
+position = Vector2(215, 10)
+scale = Vector2(0.0915148, 0.499927)
+script = null
+
+[node name="Area2D" parent="Node2D" index="0"]
+position = Vector2(2884.78, 4.00058)
+scale = Vector2(-2.2, 1.01429)
+collision_layer = 512
+script = null
+
+[node name="Player" parent="." instance=ExtResource("4_awsuq")]
+position = Vector2(139, 292)
+
+[connection signal="body_entered" from="Node2D/Area2D" to="Bunny" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Node2D/Area2D" to="Bunny" method="_on_area_2d_body_exited"]
+
+[editable path="Node2D"]
