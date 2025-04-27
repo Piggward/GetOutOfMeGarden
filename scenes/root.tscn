@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj154uebbt08s"]
 
 [ext_resource type="Script" uid="uid://daa88o7nurhxy" path="res://scripts/root.gd" id="1_lrqlo"]
-[ext_resource type="PackedScene" uid="uid://rnu4pekwbllv" path="res://scenes/root_art.tscn" id="3_lrqlo"]
+[ext_resource type="PackedScene" path="res://scenes/root_art.tscn" id="3_lrqlo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqta8"]
 

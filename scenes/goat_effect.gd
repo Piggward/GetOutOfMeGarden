@@ -17,6 +17,7 @@ func _input(event):
 		   local_position.y >= -extents.y and local_position.y <= extents.y:
 			$GPUParticles2D.emitting = true
 			$Timer.start()
+			$AudioStreamPlayer2D.play()
 			# Do something here
 
 

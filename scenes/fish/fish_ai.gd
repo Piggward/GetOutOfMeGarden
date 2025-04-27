@@ -3,8 +3,14 @@ class_name Fish
 
 var path_follow = null
 var target_progress = 0.0
+
+var spawn_sound = preload("res://assets/audio/fish_jump.wav")
+
 func _ready(): 
 	super._ready()
+	$AudioStreamPlayer2D.stream = spawn_sound
+	$AudioStreamPlayer2D.play()
+	contact_monitor = true
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -61,3 +67,8 @@ func _on_mouse_exited() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("water") or body.get_collision_layer_bit(9):  # Assuming "water" is layer 1
+		print("Collided with water area!")

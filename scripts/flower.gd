@@ -32,7 +32,6 @@ func interact(tool_used: String = ""):
 				child.queue_free()
 				has_pointer = false
 				water_level.value = water_level.max_value
-				print("ahuhw")
 	if not can_interact:
 		return
 	
@@ -47,7 +46,6 @@ func interact(tool_used: String = ""):
 
 func set_growth_stage(id: int):
 	if start_sprite_id + progress.DEAD == cur_sprite_id:
-		print("flower is already dead")
 		return
 
 	cur_sprite_id = start_sprite_id + id
@@ -82,7 +80,6 @@ func _on_interaction_timer_timeout() -> void:
 
 func _kill():
 	# Killed?
-	print("flower dead")
 	is_dead = true
 	set_growth_stage(progress.DEAD)
 	growth_timer.paused = true

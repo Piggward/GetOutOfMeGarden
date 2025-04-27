@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://by77kh12qqij3"]
+[gd_scene load_steps=12 format=3 uid="uid://by77kh12qqij3"]
 
 [ext_resource type="Script" uid="uid://bmdybp0apinec" path="res://scenes/goat_effect.gd" id="1_8qcbp"]
 [ext_resource type="Texture2D" uid="uid://dcm563hryqhi6" path="res://assets/animals/cow animation.png" id="1_hm3wg"]
-[ext_resource type="Script" uid="uid://jplf02h1rf18" path="res://scripts/animated_sprite_start.gd" id="2_8qcbp"]
+[ext_resource type="Script" path="res://scripts/animated_sprite_start.gd" id="2_8qcbp"]
 [ext_resource type="Texture2D" uid="uid://bwfy0td2ahqw1" path="res://assets/animals/heart.png" id="4_stj50"]
+[ext_resource type="AudioStream" uid="uid://c7cxr3r66gdm4" path="res://assets/audio/cow.wav" id="5_75622"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qcbp"]
 atlas = ExtResource("1_hm3wg")
@@ -68,5 +69,8 @@ process_material = SubResource("ParticleProcessMaterial_75622")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_75622")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

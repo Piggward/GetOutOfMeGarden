@@ -25,9 +25,9 @@ func set_growth_stage(id: int):
 		
 func get_random_alive_flower()-> Area2D:
 	if flowers_alive.size() == 0:
-		return flowers[0]
+		return flowers.pick_random()
 
-	return flowers_alive[randi_range(0,flowers_alive.size()-1)]
+	return flowers_alive.pick_random()
 
 func _on_flower_flower_died(dead_flower: Flower) -> void:
 	flowers_alive.erase(dead_flower)

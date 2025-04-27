@@ -9,12 +9,14 @@ var player: Player
 @export var max_velocity: float = 500
 var mouse_enter = false
 var offset: Vector2 = Vector2.ZERO
-
+var drown_audio: AudioStreamPlayer2D = null
 signal die
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	
+	drown_audio = AudioStreamPlayer2D.new()
+	drown_audio.stream = preload("res://assets/audio/fish_back_in_water.wav")
+	add_child(drown_audio)
 func _input(event):
 	if event.is_action_pressed("left_click") and player.can_pick_up() and mouse_enter:
 		_setheld(true)
@@ -44,3 +46,9 @@ func _setheld(value:bool):
 	else:
 		player.release()
 		global_position = global_position
+
+func drown():
+	drown_audio.play()
+	visible = false
+	await drown_audio.finished
+	queue_free()
