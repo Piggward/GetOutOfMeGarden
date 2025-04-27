@@ -49,6 +49,8 @@ func damage():
 func kill():
 	animated_sprite_2d.visible = false
 	die.emit(self)
+	self.monitoring = false
+	self.monitorable = false
 	$DeathTimer.start()
 	#self.queue_free()
 
