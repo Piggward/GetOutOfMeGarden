@@ -26,13 +26,15 @@ func _ready():
 	pass
 	
 func _game_start():
-	start_spawning_object("root", .1)
-	start_spawning_object("weed", .1)
+	pass
+	#start_spawning_object("root", .1)
+	#start_spawning_object("weed", .1)
+
 	
 # spawn_rate in s
-func start_spawning_object(object_name: String, spawn_rate: float) -> void:
-	if spawn_rate <= 0:
-		return
+func start_spawning_object(object_name: String, spawn_rate: float) -> Timer:
+	#if spawn_rate <= 0:
+	#	return
 	var timer = Timer.new()
 	timer.name = "SpawnTimer[%s]" % object_name  # Optional: helpful for debugging
 	timer.wait_time = spawn_rate
@@ -44,6 +46,7 @@ func start_spawning_object(object_name: String, spawn_rate: float) -> void:
 	timer.timeout.connect(_on_spawn_timer_timeout.bind(spawn_object, [object_name]))
 
 	timer.start()
+	return timer
 
 # Called every time any timer fires
 func _on_spawn_timer_timeout(func_to_call: Callable, args: Array):

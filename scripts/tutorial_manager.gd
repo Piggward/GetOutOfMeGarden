@@ -15,14 +15,16 @@ const WEED = preload("res://scenes/weed.tscn")
 const ROOT = preload("res://scenes/root.tscn")
 @onready var first_stump_marker = $FirstStumpMarker
 @onready var pointer = $Pointer
-@onready var watering_can = $"../WateringCan"
+var watering_can: WateringCan
 @onready var flower_bed = $"../FlowerBed"
 var flowers: Array[Area2D] = []
 @onready var bunny_throw_marker = $"Bunny Throw Marker"
 @onready var next_rect = $"../CanvasLayer/ToolTip/NextRect"
 @onready var animation_player = $AnimationPlayer
-
+@onready var tool_area = $"../Boundries/ToolArea"
+const WATERING_CAN = preload("res://scenes/tools/watering_can.tscn")
 @export var show_tutorial: bool = true
+@onready var vatten_kanna_marker = $"../Boundries/ToolArea/VattenKannaMarker"
 
 func _ready():
 	Global.tutorial_start.connect(start)
@@ -32,12 +34,18 @@ func start():
 		await get_parent().ready
 		var s = SHOVEL.instantiate()
 		var ss = SCISSORS.instantiate()
-		get_parent().add_child(s)
-		get_parent().add_child(ss)
+		tool_area.add_child(s)
+		tool_area.add_child(ss)
 		s.global_position = shovel_marker.global_position
 		ss.global_position = scissor_marker.global_position
+		watering_can = WATERING_CAN.instantiate()
+		watering_can.global_position = vatten_kanna_marker.global_position
+		tool_area.add_child(watering_can)
 		tutorial_finished()
 		return
+	watering_can = WATERING_CAN.instantiate()
+	watering_can.global_position = vatten_kanna_marker.global_position
+	tool_area.add_child(watering_can)
 	Global.has_interacted.connect(_on_first_interact)
 	Global.has_picked_up.connect(_on_first_pick_up)
 	tool_tip.visible = true
@@ -66,6 +74,7 @@ func _on_first_interact(area: InteractableArea):
 		await next_rect.next_pressed
 		tool_label.text = "But watch out! Your garden is host to vicious weeds"
 		overgrowth_bar.visible = true
+		overgrowth_bar.value = overgrowth_bar.max_value / 2
 		var weed = WEED.instantiate()
 		get_tree().root.add_child(weed)
 		weed.global_position = first_weed_marker.global_position
@@ -81,6 +90,7 @@ func _on_first_interact(area: InteractableArea):
 		pointer.global_position = scissor.global_position + Vector2(0, -30)
 		await weed.die
 		tool_label.text = "Outstanding! You are a god!"
+		overgrowth_bar.value = 0
 		pointer.visible = false
 		next_rect.visible = true
 		await next_rect.next_pressed
@@ -112,6 +122,7 @@ func _on_first_interact(area: InteractableArea):
 		get_tree().root.add_child(stump)
 		await stump.die
 		tool_label.text = "Great, you are now on your own, good luck!"
+		pointer.visible = false
 		next_rect.visible = true
 		next_rect.get_child(0).text = "Begin!"
 		await next_rect.next_pressed
