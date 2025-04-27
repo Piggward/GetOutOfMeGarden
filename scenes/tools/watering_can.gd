@@ -26,12 +26,13 @@ func start_watering():
 func stop_performing_action():
 	if not holding_action:
 		return
+	reset()
+	pass
+
+func reset():
 	holding_action = false
 	performing_action = false
-	animation_player.play_backwards("water")
-	for child in water_marker.get_children():
-		child.emitting = false
-	pass
+	animation_player.play("RESET")
 
 func _process(delta: float) -> void:
 	if interactable_areas.size() > 0 and performing_action:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://wp0cro7q2wqd"]
+[gd_scene load_steps=61 format=4 uid="uid://wp0cro7q2wqd"]
 
 [ext_resource type="PackedScene" uid="uid://crdw1og70sc66" path="res://scenes/game_manager.tscn" id="1_1fh0c"]
 [ext_resource type="Script" uid="uid://dx8al1t643ccl" path="res://scripts/tutorial_manager.gd" id="1_h3kef"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://blkawa1nvi8ob" path="res://scenes/flower_bed.tscn" id="4_xa8rf"]
 [ext_resource type="Texture2D" uid="uid://dti8xo1td4twl" path="res://assets/animals/sheep_baby animation.png" id="5_wau27"]
 [ext_resource type="PackedScene" uid="uid://dpg62jqn51xjl" path="res://scenes/bunny_manager.tscn" id="6_0jxs1"]
-[ext_resource type="PackedScene" uid="uid://ue117ad88ghi" path="res://scenes/tools/watering_can.tscn" id="6_qceur"]
 [ext_resource type="PackedScene" uid="uid://uoo3t71yuptp" path="res://scenes/spawnable_area.tscn" id="7_smrwv"]
 [ext_resource type="PackedScene" uid="uid://cw7ektx7rvu53" path="res://scenes/player/player.tscn" id="8_smrwv"]
 [ext_resource type="Script" uid="uid://d3wkbtn4suwqm" path="res://scripts/canvas_layer.gd" id="16_01anq"]
@@ -19,6 +18,33 @@
 [ext_resource type="Texture2D" uid="uid://wa087bm7hq7i" path="res://assets/ui/UI.png" id="18_01anq"]
 [ext_resource type="Script" uid="uid://dwsrb5u1m7wgm" path="res://scenes/next_rect.gd" id="19_emd7q"]
 [ext_resource type="PackedScene" uid="uid://br87xu4ho1sjl" path="res://scenes/general_label.tscn" id="19_wau27"]
+
+[sub_resource type="Animation" id="Animation_emd7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Boundries/Bounds/CollisionShape2D7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(211.25, 48), Vector2(208, -77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Boundries/ToolArea/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(343.5, 156)]
+}
 
 [sub_resource type="Animation" id="Animation_wau27"]
 resource_name = "tutorial"
@@ -46,33 +72,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(343.5, 155), Vector2(343.5, 219)]
-}
-
-[sub_resource type="Animation" id="Animation_emd7q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Boundries/Bounds/CollisionShape2D7:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(211.25, 48)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Boundries/ToolArea/CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(343.5, 156)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ta3j7"]
@@ -303,7 +302,6 @@ region = Rect2(127.644, 67.9062, 48.3854, 18.1991)
 
 [node name="TutorialManager" type="Node" parent="."]
 script = ExtResource("1_h3kef")
-show_tutorial = false
 
 [node name="FirstWeedMarker" type="Marker2D" parent="TutorialManager"]
 position = Vector2(430, 185)
@@ -468,7 +466,7 @@ position = Vector2(343.5, 156)
 shape = SubResource("RectangleShape2D_1r8fp")
 
 [node name="VattenKannaMarker" type="Marker2D" parent="Boundries/ToolArea"]
-position = Vector2(160, 233)
+position = Vector2(193, 218)
 
 [node name="ShovelMarker" type="Marker2D" parent="Boundries/ToolArea"]
 position = Vector2(325, 223)
@@ -498,9 +496,6 @@ spawn_area_height = 200.0
 
 [node name="Player" parent="." instance=ExtResource("8_smrwv")]
 
-[node name="WateringCan" parent="." instance=ExtResource("6_qceur")]
-position = Vector2(221, 211)
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ul6ws")
 
@@ -517,6 +512,7 @@ offset_bottom = 673.0
 [node name="TextureRect" parent="CanvasLayer" instance=ExtResource("19_wau27")]
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource("19_wau27")]
+visible = false
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.01
@@ -562,5 +558,4 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="CanvasLayer/ToolTip/NextRect" to="CanvasLayer/ToolTip/NextRect" method="_on_mouse_exited"]
 
 [editable path="SpawnableArea"]
-[editable path="WateringCan"]
 [editable path="CanvasLayer/ToolTip"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://xh17gek584h7"]
+
+[ext_resource type="Texture2D" uid="uid://bq0wi8nw060no" path="res://assets/particles/star_06.png" id="1_rgovn"]
+
+[sub_resource type="Curve" id="Curve_pi2mk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.213235, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7pjwq"]
+curve = SubResource("Curve_pi2mk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hcmod"]
+particle_flag_disable_z = true
+angular_velocity_min = 45.0
+angular_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_7pjwq")
+
+[node name="SpawnToolStar" type="GPUParticles2D"]
+z_index = 1
+texture_filter = 1
+emitting = false
+amount = 1
+texture = ExtResource("1_rgovn")
+lifetime = 1.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_hcmod")
