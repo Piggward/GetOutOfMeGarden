@@ -13,4 +13,6 @@ func _update_value():
 	var amount_of_grass_or_roots = spawned_objects.get_children().size()-1
 	self.value = amount_of_grass_or_roots
 	self.value_changed.emit()
+	if value == max_value:
+		Global.game_over.emit(false)
 	

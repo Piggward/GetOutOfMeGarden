@@ -28,7 +28,7 @@ const WATERING_CAN = preload("res://scenes/tools/watering_can.tscn")
 @onready var music = $"../Music"
 
 func _ready():
-	if not show_tutorial:
+	if not show_tutorial or Global.has_reloaded:
 		await get_parent().ready
 		var s = SHOVEL.instantiate()
 		var ss = SCISSORS.instantiate()
@@ -41,8 +41,6 @@ func _ready():
 		tool_area.add_child(watering_can)
 		tutorial_finished()
 		return
-	await get_tree().create_timer(1).timeout
-	music.get_stream_playback().switch_to_clip_by_name(&"Garden Main Loop")
 	watering_can = WATERING_CAN.instantiate()
 	watering_can.global_position = vatten_kanna_marker.global_position
 	tool_area.add_child(watering_can)
@@ -54,6 +52,9 @@ func _ready():
 	pointer.visible = true
 	next_rect.visible = false
 	animation_player.play("tutorial")
+	music.play()
+	await get_tree().create_timer(1).timeout
+	music.get_stream_playback().switch_to_clip_by_name(&"Garden Main Loop")
 	
 func tutorial_finished():
 	print("done with tutorial?=?????")
